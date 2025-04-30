@@ -1,0 +1,7 @@
+<div class="story-list">
+  <div ng-repeat="story in stories | filter:{ genre: selectedGenre }" class="story-preview">
+    <h2><a href="#!/story/{{ story.id }}">{{ story.title }}</a></h2>
+    <p><strong>Genre:</strong> {{ story.genre }}</p>
+    <p>{{ story.content }}</p>
+  </div>
+</div>
