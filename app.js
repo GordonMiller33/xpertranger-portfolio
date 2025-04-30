@@ -12,10 +12,16 @@ app.controller('MainController', function($scope) {
 		{ id: 3, title: 'Armorer', category: 'Feat', summary: 'Craft and maintain armor for your party.', content: "<h2>Armorer</h2><p><em>General Feat (Prerequisite: Level 4+, Intelligence or Wisdom 13+)</em></p><p>You gain the following benefits:</p><ul><li><strong>Ability Score Increase.</strong> Increase your Strength, Dexterity, Wisdom, or Intelligence by 1.</li><li><strong>Tools of the Trade.</strong> You gain proficiency with either Smith’s Tools or Leatherworker’s Tools. If you are already proficient with the chosen tools, you gain expertise with the chosen tools.</li><li><strong>Armor Crafter.</strong> When you craft a set of armor or a shield, you can halve the value of raw materials and the number of days required to make the item.</li><li><strong>Reinforce Armor.</strong> As part of a long rest, you can reinforce a set of armor if you have Smith’s Tools or Leatherworker’s Tools on hand. At the end of the long rest choose a set of armor that is within 5 feet of you, it gains the following property for 24 hours:<ul><li><strong>Reinforced.</strong> When a creature takes bludgeoning, piercing, or slashing damage while wearing this armor, they can reduce it by half of your proficiency bonus (rounded up).</li></ul></li><li><strong>Patch Armor.</strong> As part of a short or long rest, you can patch the damaged points of a few sets of armor or shields if you have Smith’s Tools or Leatherworker’s Tools on hand. At the end of the rest choose up to three sets of armor or shields within 5 feet of you, they gain the following property:<ul><li><strong>Patched Up.</strong> The next time a creature wearing this armor or wielding this shield takes damage, the damage is reduced by 1d4. This effect can trigger a number of times equal to your proficiency bonus.</li></ul></li></ul>" },
 	];
 
-	$scope.currentSort = '';
+	$scope.currentSort = 'title';
+	$scope.reverseSort = false;
 
 	$scope.setCurrentSort = function(sorter){
-		$scope.currentSort = sorter;
+		if ($scope.currentSort === sorter) {
+			$scope.reverseSort = !$scope.reverseSort;
+		} else {
+			$scope.currentSort = sorter;
+			$scope.reverseSort = false;
+		}
 	}
 
 	$scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
