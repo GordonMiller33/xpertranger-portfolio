@@ -21,8 +21,9 @@
 			</select>
 		</nav>
 		<main>
-			<div class="filters-window" ng-class="{ 'no-display' : (filtersHidden) }">
+			<div class="filters-window" ng-click="showFilterWindow" ng-class="{ 'no-display' : (filtersHidden) }">
 				temp filter text
+				<button ng-click="hideFilterWindow">Close filter window</button>
 			</div>
 			<div class="display-area row">
 				<div>

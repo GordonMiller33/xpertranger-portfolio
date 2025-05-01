@@ -31,6 +31,10 @@ app.controller('MainController', function($scope, $http) {
 		$scope.filtersHidden = false;
 	}
 
+	$scope.hideFilterWindow = function() {
+		$scope.filtersHidden = true;
+	}
+
 	$scope.brews = [];
 	$scope.categories = [];
 	$scope.selectedGenre = '';

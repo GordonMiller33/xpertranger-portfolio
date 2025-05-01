@@ -152,7 +152,7 @@ header {
 
 .filters-window{
 	position: absolute;
-	width:800px;
+	width: 800px;
 	height: 600px;
 	border: 4px grey; 
 	border-radius: 10px;
