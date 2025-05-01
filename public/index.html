@@ -25,10 +25,16 @@
 				<div>
 					<table  class="brew-nav-table">
 						<tr>
-							<td>Filter</td>
+							<td>
+								<button ng-click="" class="clickable-header table-filter">
+									Filter
+								</button>
+							</td>
 						</tr>
 						<tr>
-							<td>Search</td>
+							<td>
+								<input type="text" placeholder="Search" ng-model="searchTerm"></input>
+							</td>
 						</tr>
 						<tr>
 							<th style="min-width: 80px">
@@ -43,7 +49,7 @@
 							</th>
 						<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew), }" 
 						ng-click="selectBrew(brew.id)" 
-						ng-repeat="brew in brews | filter:selectedCategory | orderBy:currentSort:reverseSort">
+						ng-repeat="brew in brews | category:selectedCategory | filter:searchTerm | orderBy:currentSort:reverseSort">
 							<td>{{brew.title}}</th>
 							<td>{{brew.category}}</th>
 						</tr>

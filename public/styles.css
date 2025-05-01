@@ -69,6 +69,16 @@ header {
 	font-weight: bold;
 }
 
+.search {
+	td {
+		colspan: 2;
+	}
+}
+
+.table-filter {
+	colspan: 2;
+}
+
 .brew-display{
 	width: 650px;
 	background: #f7ebcb;
