@@ -21,7 +21,7 @@
 			</select>
 		</nav>
 		<main>
-			<div class="filters-window" ng-click="showFilterWindow" ng-class="{ 'no-display' : (filtersHidden) }">
+			<div class="filters-window" ng-class="{ 'no-display' : (filtersHidden) }">
 				temp filter text
 				<button ng-click="hideFilterWindow">Close filter window</button>
 			</div>
@@ -30,7 +30,7 @@
 					<table  class="brew-nav-table">
 						<tr>
 							<th colspan="2">
-								<button ng-click="" class="clickable-header table-filter">
+								<button ng-click="showFilterWindow()" class="clickable-header table-filter">
 									Filter
 								</button>
 							</th>
