@@ -29,6 +29,7 @@ header {
 
 .display-area{
 	width: 100%;
+	height: 100%;
 	justify-content: center;
 }
 
@@ -154,7 +155,7 @@ header {
 	position: absolute;
 	width: 800px;
 	height: 600px;
-	border: 4px grey; 
+	border: 4px black;
 	border-radius: 10px;
 	background-color: #ffffff;
 }
@@ -207,6 +208,7 @@ header {
 	}
 
 	.filters-window{
+		border: 4px white;
 		background-color: #121212;
 	}
 }
