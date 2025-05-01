@@ -123,6 +123,15 @@ header {
 	}
 }
 
+.clickable-header {
+	width: 100%;
+	height: 100%;
+	background-color: inherit;
+	color: inherit;
+	border: none;
+	font-weight: bold;
+}
+
 .dark-mode {
 	background-color: #121212;
 	color: #eee;

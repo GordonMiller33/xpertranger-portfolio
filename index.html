@@ -25,15 +25,25 @@
 				<div class="table-display-area">
 					<table  class="brew-nav-table">
 						<tr>
-							<th ng-click="setCurrentSort('title')">Title<span ng-if="currentSort === 'title'">{{ reverseSort ? '↑' : '↓' }}</span></th>
-							<th ng-click="setCurrentSort('category')">Category<span ng-if="currentSort === 'category'">{{ reverseSort ? '↑' : '↓' }}</span></th>
-							<th ng-click="setCurrentSort('summary')">Summary<span ng-if="currentSort === 'summary'">{{ reverseSort ? '↑' : '↓' }}</span></th>
+							<td></th>
+							<td></th>
+						</tr>
+						<tr>
+							<th style="min-width: 80px">
+								<button ng-click="setCurrentSort('title')" class="clickable-header">
+									Title<span ng-if="currentSort === 'title'">{{ reverseSort ? '↑' : '↓' }}</span>
+								</button>
+							</th>
+							<th style="min-width: 80px">
+								<button ng-click="setCurrentSort('category')" class="clickable-header">
+									Category<span ng-if="currentSort === 'category'">{{ reverseSort ? '↑' : '↓' }}</span>
+								</button>
+							</th>
 						<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew), }" 
 						ng-click="selectBrew(brew.id)" 
 						ng-repeat="brew in brews | filter:selectedCategory | orderBy:currentSort:reverseSort">
 							<td>{{brew.title}}</th>
 							<td>{{brew.category}}</th>
-							<td>{{brew.summary}}</th>
 						</tr>
 					</table>
 				</div>
