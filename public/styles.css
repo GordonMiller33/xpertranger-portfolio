@@ -156,7 +156,7 @@ header {
 	height: 600px;
 	border: 4px grey; 
 	border-radius: 10px;
-	
+	background-color: #ffffff;
 }
 
 .dark-mode {
@@ -204,6 +204,10 @@ header {
 	
 	.selected-tr:hover{
 		background-color: #375427;
+	}
+
+	.filters-window{
+		background-color: #121212;
 	}
 }
 
