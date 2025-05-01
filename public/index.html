@@ -22,7 +22,7 @@
 		</nav>
 		<main>
 			<div class="display-area row">
-				<div >
+				<div>
 					<table  class="brew-nav-table">
 						<tr>
 							<td></th>
@@ -54,6 +54,15 @@
 						</section>
 					</div>
 				</div>
+			</div>
+			<div class="display-area row">
+				<label>Enter Title:</label>
+				<input type="text" ng-model="newBrewTitle"></input>
+				<label>Enter Category:</label>
+				<input type="text" ng-model="newBrewCategory"></input>
+				<label>Enter Content:</label>
+				<input type="text" ng-model="newBrewContent"></input>
+				<button ng-onclick="addBrew()"> Add test brew </button>
 			</div>
 		</main>
 	</body>
