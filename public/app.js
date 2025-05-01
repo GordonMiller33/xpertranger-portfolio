@@ -33,6 +33,7 @@ app.controller('MainController', function($scope, $http) {
 
 	$scope.hideFilterWindow = function() {
 		$scope.filtersHidden = true;
+		//does getbrews and a bunch of filtering
 	}
 
 	$scope.brews = [];
@@ -100,11 +101,11 @@ app.controller('MainController', function($scope, $http) {
 		console.log('Putting brew into brews:', $scope.newBrew);
 		
 		$http.put(apiUrl, $scope.newBrew)
-			.then(function(response) {
+			.then(async function(response) {
 				console.log('API response:', response);
 				if (response && response.data) {
 					console.log('Brew PUT successfully');
-					$scope.getBrews(true);
+					await $scope.getBrews(true);
 					$scope.nextId++;
                 } else {
                     console.error('Invalid response format:', response);
