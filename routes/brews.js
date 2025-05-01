@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Brew = require('../models/brew');
 
-// Get all brews
 router.get('/', async (req, res) => {
   try {
     const brews = await Brew.find();
@@ -12,7 +11,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get a single brew
 router.get('/:id', async (req, res) => {
   try {
     const brew = await Brew.findOne({ id: req.params.id });
