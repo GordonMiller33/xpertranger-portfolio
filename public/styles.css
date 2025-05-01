@@ -36,7 +36,10 @@ header {
 	
 	td,th{
 		border: 1px solid grey;
-		padding: 5px;
+		padding: 0px;
+	}
+	th:hover{
+		border: 3px solid #a1edb5;
 	}
 	td{
 		border-right: 0px;
@@ -78,6 +81,10 @@ header {
 	border: none;
 	background-color: inherit;
 	color: white;
+}
+
+.search:enabled {
+	border: 3px solid #a1edb5;
 }
 
 .brew-display{
