@@ -28,11 +28,12 @@ app.controller('MainController', function($scope, $http) {
 	$scope.filtersHidden = true;
 	
 	$scope.showFilterWindow = function() {
-		
+		console.log("Opening filter window");
 		$scope.filtersHidden = false;
 	}
 
 	$scope.hideFilterWindow = function() {
+		console.log("Closing filter window");
 		$scope.filtersHidden = true;
 		//does getbrews and a bunch of filtering
 	}
