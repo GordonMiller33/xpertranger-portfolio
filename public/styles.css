@@ -69,6 +69,14 @@ header {
 	font-weight: bold;
 }
 
+.clickable-header:hover {
+	margin: 1px white;
+}
+.search {
+	background-color: inherit;
+	color: white;
+}
+
 .brew-display{
 	width: 650px;
 	background: #f7ebcb;
