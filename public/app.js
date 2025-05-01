@@ -6,21 +6,7 @@ app.controller('MainController', function($scope) {
 		$scope.darkMode = !$scope.darkMode;
 	};
 
-	$scope.getBrews = async function() {
-		try {
-			let response = await fetch("/brews");
-
-			if (!response.ok) {
-		    	throw new Error(`HTTP error! Status: ${response.status}`);
-		    }
-
-		    $scope.brews = await response.json();
-		} catch {
-			console.error('Error fetching brews:', error);
-		}
-	}
-
-	$scope.getBrews();
+	$scope.brews = getBrews();
 
 	/* $scope.brews = [
 		{ id: 1, title: 'Demoralize', category: 'Action', summary: 'A new action to scare your foes into submission.', content: "<h2>Demoralize</h2><p>As an action, you attempt to convince a hostile creature within 60 feet of you that can hear you to give up on fighting. The target must make a Wisdom saving throw with a DC of 8 + your proficiency bonus + your Wisdom, Charisma, or Intelligence modifier (your choice). Targets with more than half of their total hit points have advantage on this saving throw. On a failure, the target takes 1d6 psychic damage which can't be reduced in any way.</p><p>If damage from this action would reduce a target to 0 hit points, they are instead reduced to 1 hit point and they must immediately choose one of the following courses of action:</p><ul><li><strong>Retreat.</strong> For the next 8 hours they must spend their turns trying to move as far away from you as they can. They also can't take reactions. For their action, they can use only the 	Dash action or try to escape from an effect that prevents them from moving. If there's nowhere for 	them to move or they've been unable to move for 1 minute, the <i>Retreat</i> effect ends and they must 	immediately choose a different course of action. When you haven't been in their line of sight for 	10 continuous minutes, the <i>Retreat</i> effect ends.	<li><strong>Surrender.</strong> The target drops anything its holding and becomes non-hostile towards 	you and creatures of your choice until it completes a long rest.	<li><strong>Falter.</strong> The target is stunned until the start of your next turn. Then, they 	become immune to this action for 1 hour.</ul><p>Creatures that are immune to the frightened condition are immune to this action.</p><p>This action's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).</p><section class='box'> 	<h5>Xpert Advice: Psychic Damage?</h5>	<p>The psychic damage from this action represents a creature losing its will to fight.</p></section>"},
@@ -50,3 +36,17 @@ app.controller('MainController', function($scope) {
 		$scope.selectedBrew = parseInt(sid);
 	};
 });
+
+async function getBrews() {
+	try {
+		let response = await fetch("/brews");
+
+		if (!response.ok) {
+	    	throw new Error(`HTTP error! Status: ${response.status}`);
+	    }
+
+	    return await response.json();
+	} catch {
+		console.error('Error fetching brews:', error);
+	}
+}
