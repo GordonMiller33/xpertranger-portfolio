@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGODB_URI, {
   .catch(err => console.error(err));
 
 const brewSchema = new mongoose.Schema({
-  id: int,
+  id: Number,
   title: String,
   category: String,
   summary: String,
