@@ -78,7 +78,7 @@ app.controller('MainController', function($scope, $http) {
 	$scope.addBrew = function() {
 		const apiUrl = '/brews';
 		
-		console.log('Putting brew into brews:', newBrew);
+		console.log('Putting brew into brews:', $scope.newBrew);
 		
 		$http.put(apiUrl, $scope.newBrew)
 			.then(function(response) {
