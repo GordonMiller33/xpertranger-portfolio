@@ -1,35 +1,26 @@
-const express = require('express');
-const { MongoClient } = require('mongodb');
-const cors = require('cors');
-
-
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// MongoDB setup
-const uri = process.env.MONGODB_URI;
-const client = new MongoClient(uri);
+// Serve static frontend files
+app.use(express.static('public'));
 
-let storiesCollection;
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => console.log('MongoDB connected'))
+  .catch(err => console.error(err));
 
-async function startServer() {
-  try {
-    await client.connect();
-    const db = client.db("xpertranger-portfolio");
-    storiesCollection = db.collection("brews");
+// API endpoint to get stories
+const Story = require('./models/Story'); // your Mongoose model
+app.get('/api/stories', async (req, res) => {
+  const stories = await Story.find();
+  res.json(stories);
+});
 
-    // Start the server *after* connecting to DB
-    app.listen(port, () => {
-      console.log(`🚀 Server running at http://localhost:${port}`);
-    });
-
-  } catch (err) {
-    console.error("Failed to connect to MongoDB:", err);
-    process.exit(1);
-  }
-}
-
-startServer();
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
