@@ -63,9 +63,9 @@ header {
 .clickable-header {
 	width: 100%;
 	height: 100%;
+	border: none;
 	background-color: inherit;
 	color: inherit;
-	border: none;
 	font-weight: bold;
 }
 
@@ -73,6 +73,9 @@ header {
 	margin: 1px white;
 }
 .search {
+	width: 100%;
+	height: 100%;
+	border: none;
 	background-color: inherit;
 	color: white;
 }
