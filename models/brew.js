@@ -19,7 +19,6 @@ const brewSchema = new mongoose.Schema({
 	created_at: {
 	   	type: Date,
 	   	default: Date.now
-	}
-});
+	}, { collection: 'brews' });
 
-module.exports = mongoose.model('Brew', brewSchema);
+module.exports = mongoose.model('Brew', brewSchema, 'brews');
