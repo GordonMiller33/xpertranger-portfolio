@@ -150,6 +150,15 @@ header {
 	}
 }
 
+.filters-window{
+	position: absolute;
+	width:800px;
+	height: 600px;
+	border: 4px grey; 
+	border-radius: 10px;
+	
+}
+
 .dark-mode {
 	background-color: #121212;
 	color: #eee;
