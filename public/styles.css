@@ -39,7 +39,7 @@ header {
 		padding: 0px;
 	}
 	th:hover{
-		border: 1px solid #a1edb5;
+		border: 1px solid black;
 	}
 	td{
 		border-right: 0px;
@@ -77,10 +77,6 @@ header {
 	border: none;
 	background-color: inherit;
 	color: white;
-}
-
-.search:enabled {
-	border: 1px solid #a1edb5;
 }
 
 .brew-display{
@@ -177,7 +173,7 @@ header {
 	
 	.brew-nav-table {
 		th:hover{
-			border: 1px solid #283d1c;
+			border: 2px solid white;
 		}
 	}
 	
