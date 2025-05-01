@@ -24,6 +24,12 @@ app.controller('MainController', function($scope, $http) {
 			$scope.reverseSort = false;
 		}
 	}
+	
+	$scope.filtersHidden = true;
+	
+	$scope.showFilterWindow = function() {
+		$scope.filtersHidden = false;
+	}
 
 	$scope.brews = [];
 	$scope.categories = [];
