@@ -6,7 +6,7 @@ app.controller('MainController', function($scope) {
 		$scope.darkMode = !$scope.darkMode;
 	};
 
-	$scope.getBrews = function() {
+	$scope.getBrews = async function() {
 		try {
 			let response = await fetch("/brews");
 
