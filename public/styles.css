@@ -36,12 +36,12 @@ header {
 	border-spacing: 0px;
 	margin: 0 10px;
 	border-collapse: collapse;
+	font-size: 16px;
 	
 	td,th{
 		border: 1px solid grey;
 		padding: 0px;
 		min-width: 100px;
-		font-size: 16px;
 	}
 	th:hover{
 		border: 1px solid black;
@@ -75,6 +75,7 @@ header {
 	background-color: inherit;
 	color: inherit;
 	font-weight: bold;
+	font-size: 18px;
 }
 .search {
 	width: 100%;
