@@ -27,10 +27,9 @@ app.controller('MainController', function($scope, $http) {
 		}
 	}
 
+	$scope.brews = [];
 	$scope.categories = [];
-
 	$scope.selectedGenre = '';
-
 	$scope.selectedBrew = 0;
 
 	$scope.selectBrew = function(sid){
