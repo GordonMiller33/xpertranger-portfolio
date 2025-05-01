@@ -70,7 +70,7 @@ app.controller('MainController', function($scope, $http) {
 	$scope.nextId = $scope.brews.length;
 	
 	$scope.newBrew = {
-		id: $scope.nextId;
+		id: $scope.nextId,
 		title: $scope.newBrewTitle,
 		category: $scope.newBrewTitle,
 		summary: $scope.newBrewContent,
