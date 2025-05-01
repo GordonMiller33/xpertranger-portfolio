@@ -62,6 +62,6 @@ router.post("/", async (req,res) => {
 		console.error("Error inserting brew:", err);
 		res.status(500).json({ message: err.message });
 	}
-}
+});
 
 module.exports = router;
