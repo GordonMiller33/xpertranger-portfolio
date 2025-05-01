@@ -42,6 +42,7 @@ header {
 	td,th{
 		border: 1px solid grey;
 		padding: 0px;
+		min-width: 100px;
 	}
 	th:hover{
 		border: 1px solid black;
