@@ -4,7 +4,6 @@ const cors = require('cors');
 
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -34,30 +33,3 @@ async function startServer() {
 }
 
 startServer();
-
-// API route: get all stories
-app.get('/api/stories', async (req, res) => {
-  try {
-    const genreFilter = req.query.genre;
-    const query = genreFilter ? { genre: genreFilter } : {};
-
-    const stories = await storiesCollection.find(query).toArray();
-    res.json(stories);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Error retrieving stories' });
-  }
-});
-
-// API route: get a single story by ID
-const { ObjectId } = require('mongodb');
-app.get('/api/stories/:id', async (req, res) => {
-  try {
-    const story = await storiesCollection.findOne({ _id: new ObjectId(req.params.id) });
-    if (!story) return res.status(404).json({ message: 'Story not found' });
-    res.json(story);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: 'Error retrieving story' });
-  }
-});
