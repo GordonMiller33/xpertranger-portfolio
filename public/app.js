@@ -43,7 +43,7 @@ app.controller('MainController', function($scope, $http) {
 		$scope.selectedBrew = parseInt(sid);
 	};
 	
-    $scope.getBrews = function() {
+    $scope.getBrews = function(newBrew) {
         const apiUrl = '/brews';
         
         console.log('Fetching brews from:', apiUrl);
@@ -58,7 +58,9 @@ app.controller('MainController', function($scope, $http) {
                     $scope.brews.sort(function(a, b) {
 					  	return a.title.localeCompare(b.title);
 					});
-                    $scope.selectedBrew = $scope.brews[0].id;
+					if (newBrew) { $scope.selectedBrew = $scope.nextId }
+					else { $scope.selectedBrew = $scope.brews[0].id; }
+                   
 
                     $scope.ids = [...new Set($scope.brews.map(brew => brew.id))];
                     $scope.nextId = parseInt(Math.max(...$scope.ids))+1;
@@ -78,7 +80,7 @@ app.controller('MainController', function($scope, $http) {
             });
     };
     
-    $scope.getBrews();
+    $scope.getBrews(false);
 	
 	$scope.addBrew = function() {
 		const apiUrl = '/brews';
@@ -98,7 +100,7 @@ app.controller('MainController', function($scope, $http) {
 				console.log('API response:', response);
 				if (response && response.data) {
 					console.log('Brew PUT successfully');
-					$scope.getBrews();
+					$scope.getBrews(true);
 					$scope.nextId++;
                 } else {
                     console.error('Invalid response format:', response);
