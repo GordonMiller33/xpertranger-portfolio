@@ -31,6 +31,9 @@ app.controller('MainController', function($scope, $http) {
 	$scope.categories = [];
 	$scope.selectedGenre = '';
 	$scope.selectedBrew = 0;
+	$scope.newBrewTitle = "";
+	$scope.newBrewCategory = "";
+	$scope.newBrewContent = "";
 
 	$scope.selectBrew = function(sid){
 		$scope.selectedBrew = parseInt(sid);
@@ -70,7 +73,7 @@ app.controller('MainController', function($scope, $http) {
 	$scope.newBrew = {
 		id: $scope.nextId,
 		title: $scope.newBrewTitle,
-		category: $scope.newBrewTitle,
+		category: $scope.newBrewCategory,
 		summary: $scope.newBrewContent,
 		content: $scope.newBrewContent,
 	}
