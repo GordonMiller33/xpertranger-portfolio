@@ -87,6 +87,7 @@ app.controller('MainController', function($scope, $http) {
 				if (response && response.data) {
 					console.log('Brew PUT successfully');
 					$scope.nextId++;
+					$scope.getBrews();
                 } else {
                     console.error('Invalid response format:', response);
                 }
