@@ -33,7 +33,7 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="text" placeholder="Search" ng-model="searchTerm"></input>
+								<input type="text" placeholder="Search" ng-model="searchText"></input>
 							</td>
 						</tr>
 						<tr>
@@ -49,7 +49,7 @@
 							</th>
 						<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew), }" 
 						ng-click="selectBrew(brew.id)" 
-						ng-repeat="brew in brews | category:selectedCategory | orderBy:currentSort:reverseSort">
+						ng-repeat="brew in brews | fliter:selectedCategory | fliter:searchText | orderBy:currentSort:reverseSort">
 							<td>{{brew.title}}</th>
 							<td>{{brew.category}}</th>
 						</tr>
