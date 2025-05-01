@@ -35,11 +35,27 @@ app.controller('MainController', function($scope, $http) {
 	};
     
     $scope.getBrews = function() {
-        $http.get('/brews')
+        const apiUrl = '/brews';
+        
+        console.log('Fetching brews from:', apiUrl);
+        
+        $http.get(apiUrl)
             .then(function(response) {
-                $scope.brews = response.data;
-                console.log($scope.brews);
-                $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
+                console.log('API response:', response);
+                if (response && response.data) {
+                    $scope.brews = response.data;
+                    console.log('Brews loaded:', $scope.brews.length, 'items');
+                    
+                    // Extract unique categories after data is loaded
+                    if ($scope.brews.length > 0) {
+                        $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
+                        console.log('Categories:', $scope.categories);
+                    } else {
+                        console.warn('No brews found in the database');
+                    }
+                } else {
+                    console.error('Invalid response format:', response);
+                }
             })
             .catch(function(error) {
                 console.error('Error fetching brews:', error);
