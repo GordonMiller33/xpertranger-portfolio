@@ -38,6 +38,7 @@ app.controller('MainController', function($scope, $http) {
         $http.get('/brews')
             .then(function(response) {
                 $scope.brews = response.data;
+                console.log($scope.brews);
                 $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
             })
             .catch(function(error) {
