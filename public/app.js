@@ -66,10 +66,10 @@ app.controller('MainController', function($scope, $http) {
     
     $scope.getBrews();
 	
-	$scope.nextId = $scope.brews.length+1;
-	
 	$scope.addBrew = function() {
 		const apiUrl = '/brews';
+	
+		$scope.nextId = $scope.brews.length+2;
 		
 		$scope.newBrew = {
 			id: $scope.nextId,
@@ -86,7 +86,6 @@ app.controller('MainController', function($scope, $http) {
 				console.log('API response:', response);
 				if (response && response.data) {
 					console.log('Brew PUT successfully');
-					$scope.nextId++;
 					$scope.getBrews();
                 } else {
                     console.error('Invalid response format:', response);
