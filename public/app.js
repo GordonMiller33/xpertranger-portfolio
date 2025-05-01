@@ -48,7 +48,6 @@ app.controller('MainController', function($scope, $http) {
                     $scope.brews = response.data;
                     console.log('Brews loaded:', $scope.brews.length, 'items');
                     
-                    // Extract unique categories after data is loaded
                     if ($scope.brews.length > 0) {
                         $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
                         console.log('Categories:', $scope.categories);
@@ -76,17 +75,17 @@ app.controller('MainController', function($scope, $http) {
 		content: $scope.newBrewContent,
 	}
 	
-	$scope.addBrew = function(newBrew) {
+	$scope.addBrew = function() {
 		const apiUrl = '/brews';
-		newBrew.id = $scope.nextId++;
 		
 		console.log('Putting brew into brews:', newBrew);
 		
-		$http.put(apiUrl, newBrew)
+		$http.put(apiUrl, $scope.newBrew)
 			.then(function(response) {
 				console.log('API response:', response);
 				if (response && response.data) {
 					console.log('Brew PUT successfully');
+					$scope.nextId++;
                 } else {
                     console.error('Invalid response format:', response);
                 }
