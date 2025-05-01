@@ -4,9 +4,16 @@ const Brew = require('../models/brew');
 
 router.get('/', async (req, res) => {
   try {
+    console.log('Attempting to fetch brews from database');
+    console.log('Database:', mongoose.connection.db.databaseName);
+    console.log('Collection:', Brew.collection.name);
+    
     const brews = await Brew.find();
+    console.log(`Found ${brews.length} brews`);
+    
     res.json(brews);
   } catch (err) {
+    console.error('Error fetching brews:', err);
     res.status(500).json({ message: err.message });
   }
 });
