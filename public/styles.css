@@ -75,7 +75,7 @@ header {
 	background-color: inherit;
 	color: inherit;
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 16px;
 }
 .search {
 	width: 100%;
@@ -84,7 +84,7 @@ header {
 	padding: none;
 	background-color: inherit;
 	color: white;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 .brew-display{
