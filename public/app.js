@@ -58,6 +58,9 @@ app.controller('MainController', function($scope, $http) {
 					  	return a.title.localeCompare(b.title);
 					});
                     $scope.selectedBrew = $scope.brews[0].id;
+                    $scope.ids = [...new Set($scope.brews.map(brew => brew.id))];
+
+                    $scope.nextId = Math.max(...$scope.ids)
 
                     if ($scope.brews.length > 0) {
                         $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
@@ -78,8 +81,6 @@ app.controller('MainController', function($scope, $http) {
 	
 	$scope.addBrew = function() {
 		const apiUrl = '/brews';
-	
-		$scope.nextId = $scope.brews.length+2;
 		
 		$scope.newBrew = {
 			id: $scope.nextId,
@@ -97,6 +98,7 @@ app.controller('MainController', function($scope, $http) {
 				if (response && response.data) {
 					console.log('Brew PUT successfully');
 					$scope.getBrews();
+					$scope.nextId++;
                 } else {
                     console.error('Invalid response format:', response);
                 }
