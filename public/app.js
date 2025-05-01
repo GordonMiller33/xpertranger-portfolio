@@ -1,6 +1,6 @@
 const app = angular.module('portfolioApp', ['ngSanitize']);
 
-app.controller('MainController', function($scope) {
+app.controller('MainController', function($scope, $http) {
 	$scope.darkMode = true;
 	$scope.toggleDarkMode = function() {
 		$scope.darkMode = !$scope.darkMode;
@@ -28,27 +28,26 @@ app.controller('MainController', function($scope) {
 		}
 	}
 
-	$scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
+	$scope.categories = [];
 
 	$scope.selectedGenre = '';
 
-	$scope.selectedBrew = 3;
+	$scope.selectedBrew = 1;
 
 	$scope.selectBrew = function(sid){
 		$scope.selectedBrew = parseInt(sid);
 	};
+    
+    $scope.getBrews = function() {
+        $http.get('/brews')
+            .then(function(response) {
+                $scope.brews = response.data;
+                $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
+            })
+            .catch(function(error) {
+                console.error('Error fetching brews:', error);
+            });
+    };
+    
+    $scope.getBrews();
 });
-
-async function getBrews() {
-	try {
-		let response = await fetch("/brews");
-
-		if (!response.ok) {
-	    	throw new Error(`HTTP error! Status: ${response.status}`);
-	    }
-
-	    return await response.json();
-	} catch {
-		console.error('Error fetching brews:', error);
-	}
-}
