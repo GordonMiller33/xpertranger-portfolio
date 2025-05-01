@@ -13,8 +13,6 @@ app.controller('MainController', function($scope, $http) {
 		{ id: 4, title: '
 	]; */
 
-	
-
 	$scope.currentSort = 'title';
 	$scope.reverseSort = false;
 
@@ -70,16 +68,16 @@ app.controller('MainController', function($scope, $http) {
 	
 	$scope.nextId = $scope.brews.length;
 	
-	$scope.newBrew = {
-		id: $scope.nextId,
-		title: $scope.newBrewTitle,
-		category: $scope.newBrewCategory,
-		summary: $scope.newBrewContent,
-		content: $scope.newBrewContent,
-	}
-	
 	$scope.addBrew = function() {
 		const apiUrl = '/brews';
+		
+		$scope.newBrew = {
+			id: $scope.nextId,
+			title: $scope.newBrewTitle,
+			category: $scope.newBrewCategory,
+			summary: $scope.newBrewContent,
+			content: $scope.newBrewContent,
+		};
 		
 		console.log('Putting brew into brews:', $scope.newBrew);
 		
