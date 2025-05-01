@@ -15,6 +15,8 @@ app.controller('MainController', function($scope) {
 		    }
 
 		    $scope.brews = await response.json();
+		} catch {
+			console.error('Error fetching brews:', error);
 		}
 	}
 
