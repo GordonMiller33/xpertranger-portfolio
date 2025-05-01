@@ -66,7 +66,7 @@ app.controller('MainController', function($scope, $http) {
     
     $scope.getBrews();
 	
-	$scope.nextId = $scope.brews.length;
+	$scope.nextId = $scope.brews.length+1;
 	
 	$scope.addBrew = function() {
 		const apiUrl = '/brews';
