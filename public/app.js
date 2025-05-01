@@ -6,6 +6,8 @@ app.controller('MainController', function($scope) {
 		$scope.darkMode = !$scope.darkMode;
 	};
 
+	$scope.brews = [];
+
 	$scope.brews = getBrews();
 
 	/* $scope.brews = [
