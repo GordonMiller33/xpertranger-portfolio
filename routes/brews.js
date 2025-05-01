@@ -4,17 +4,40 @@ const Brew = require('../models/brew');
 
 router.get('/', async (req, res) => {
   try {
-    console.log('Attempting to fetch brews from database');
-    console.log('Database:', mongoose.connection.db.databaseName);
-    console.log('Collection:', Brew.collection.name);
+    // Log database connection status
+    console.log('Database connection state:', mongoose.connection.readyState);
+    // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
     
-    const brews = await Brew.find();
-    console.log(`Found ${brews.length} brews`);
+    console.log('Attempting to access database:', mongoose.connection.db.databaseName);
+    console.log('Attempting to access collection:', Brew.collection.name);
     
+    // First check if we can query the collection at all
+    try {
+      const count = await Brew.countDocuments();
+      console.log(`Found ${count} documents in collection`);
+    } catch (countErr) {
+      console.error('Error counting documents:', countErr);
+    }
+    
+    // Try to find all brews with error catching
+    const brews = await Brew.find().catch(findErr => {
+      console.error('Mongoose find() error details:', findErr);
+      throw findErr; // Re-throw to be caught by the outer try/catch
+    });
+    
+    console.log(`Successfully fetched ${brews.length} brews from database`);
+    
+    // Return the results
     res.json(brews);
   } catch (err) {
-    console.error('Error fetching brews:', err);
-    res.status(500).json({ message: err.message });
+    console.error('Error in /brews GET route:', err);
+    
+    // Provide more detailed error response
+    res.status(500).json({ 
+      message: 'Error fetching brews',
+      error: err.message,
+      stack: process.env.NODE_ENV === 'development' ? err.stack : undefined
+    });
   }
 });
 
