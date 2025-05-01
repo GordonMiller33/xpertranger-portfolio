@@ -54,10 +54,10 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post("/", async (req,res) => {
+router.put("/", async (req,res) => {
 	try {
-		await Brew.create(req.body);
-		res.status(201).json(brews);
+		const newBrew = await Brew.create(req.body);
+		res.status(201).json(newBrew);
 	} catch (err) {
 		console.error("Error inserting brew:", err);
 		res.status(500).json({ message: err.message });
