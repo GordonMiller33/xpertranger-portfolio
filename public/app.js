@@ -34,7 +34,6 @@ app.controller('MainController', function($scope, $http) {
 	$scope.brews = [];
 	$scope.categories = [];
 	$scope.selectedGenre = '';
-	$scope.selectedBrew = 0;
 	$scope.newBrewTitle = "";
 	$scope.newBrewCategory = "";
 	$scope.newBrewContent = "";
@@ -55,6 +54,11 @@ app.controller('MainController', function($scope, $http) {
                     $scope.brews = response.data;
                     console.log('Brews loaded:', $scope.brews.length, 'items');
                     
+                    $scope.brews.sort(function(a, b) {
+					  	return a.title.localeCompare(b.title);
+					});
+                    $scope.selectedBrew = $scope.brews[0].id;
+
                     if ($scope.brews.length > 0) {
                         $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
                         console.log('Categories:', $scope.categories);
