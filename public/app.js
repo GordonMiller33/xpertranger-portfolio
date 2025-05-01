@@ -28,6 +28,7 @@ app.controller('MainController', function($scope, $http) {
 	$scope.filtersHidden = true;
 	
 	$scope.showFilterWindow = function() {
+		
 		$scope.filtersHidden = false;
 	}
 
