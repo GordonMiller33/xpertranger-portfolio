@@ -34,6 +34,26 @@ app.controller('MainController', function($scope, $http) {
 		$scope.selectedBrew = parseInt(sid);
 	};
     
+	$scope.addBrew = function(newBrew) {
+		const apiUrl = '/brews';
+		
+		console.log('Putting brew into brews:', newBrew);
+		
+		$http.put(apiUrl, newBrew)
+			.then(function(response) {
+				console.log('API response:', response);
+				if (response && response.data) {
+					console.log('Brew PUT successfully');
+                } else {
+                    console.error('Invalid response format:', response);
+                }
+            })
+            .catch(function(error) {
+                console.error('Error putting brew:', error);
+            });
+			}
+	}
+	
     $scope.getBrews = function() {
         const apiUrl = '/brews';
         
