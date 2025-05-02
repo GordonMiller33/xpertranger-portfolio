@@ -80,7 +80,7 @@
 						<div class="filter-header flex-row">
 							<div class="flex-col" style="justify-content: center;">
 								<div class="flex-row">
-									<h3>Filters</h3>
+									<h3 style="margin-right: 5px;">Filters</h3>
 									<input type="text" placeholder="Search" ng-model="filterSearchText" class="search"></input>
 								</div>
 							</div>
@@ -88,7 +88,11 @@
 								<button ng-click="hideFilterWindow()" class="close-button">X</button>
 							</div>
 						</div>
-						temp filter text
+						<h3>Category</h3>
+						<br>
+						<button class="filter-button" ng-repeat="category in catgories">
+							{{ category }}
+						</button>
 					</div>
 				</div>
 			</div>
