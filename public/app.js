@@ -136,15 +136,17 @@ app.controller('MainController', function($scope, $http) {
 	}
 
 	$scope.addFilter = function(filter) {
-		console.log("adding filter:", filter);
+		console.log("Adding filter:", filter);
 		$scope.activeFilters.push(filter);
+		console.log("Active filters:", $scope.activeFilters);
 	}
 
 	$scope.removeFilter = function(filter) {
-		console.log("removing filter:", filter);
+		console.log("Removing filter:", filter);
 		for (let i = 0; i < $scope.activeFilters.length; i++){
 			if ($scope.activeFilters[i] === filter){ $scope.activeFilters.splice(i, 1); }
 		}
+		console.log("Active filters:", $scope.activeFilters);
 	}
 
 	$scope.applyFilters = function() {
