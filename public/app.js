@@ -156,7 +156,7 @@ app.controller('MainController', function($scope, $http) {
 		for (let j = 0; j < $scope.filteredBrews.length; j++){
 			for (let i = 0; i < $scope.activeFilters.length; i++){
 				if($scope.filteredBrews[j].category != $scope.activeFilters[i]){
-					console.log("Filtering out brew:", filteredBrews[j]);
+					console.log("Filtering out brew:", $scope.filteredBrews[j]);
 					$scope.filteredBrews.splice(j, 1);
 				}
 			}
