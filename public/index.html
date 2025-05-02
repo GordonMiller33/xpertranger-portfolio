@@ -91,7 +91,11 @@
 						<div class="filter-section">
 							<h3>Category</h3>
 							<div class="flex-row" style="justify-content:left;">
-								<button class="basic-button filter-button filter-button-default" ng-repeat="category in categories | filter:filterSearchText">
+								<button class="basic-button filter-button"
+								ng-repeat="category in categories | filter:filterSearchText"
+								ng-click="{ 'addFilter(category)': !isActiveFilter(category), 'removeFilter(category)': isActiveFilter(category), }"
+								ng-class="{ 'filter-button-default': !isActiveFilter(category), 'filter-button-include': isActiveFilter(category), }" 
+								>
 									{{ category }}
 								</button>
 							</div>

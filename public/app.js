@@ -124,4 +124,25 @@ app.controller('MainController', function($scope, $http) {
             });
 	}
 
+	$scope.activeFilters = [];
+
+	$scope.isActiveFilter = function(filter) {
+		for (let i = 0; i < $scope.activeFilters.length(); i++){
+			if ($scope.activeFilters[i] === filter){ return true; }
+		}
+		return false;
+	}
+
+	$scope.addFilter = function(filter) {
+		console.log("adding filter:", filter);
+		$scope.activeFilters.push(filter);
+	}
+
+	$scope.removeFilter = function(filter) {
+		console.log("removing filter:", filter);
+		for (let i = 0; i < $scope.activeFilters.length(); i++){
+			if ($scope.activeFilters[i] === filter){ $scope.activeFilters.splice(i, 1); }
+		}
+	}
+
 });

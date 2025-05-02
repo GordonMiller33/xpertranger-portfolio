@@ -220,7 +220,7 @@ main {
 	}
 
 	.filter-section{
-		border-bottom: 1px solid grey;
+		border-bottom: 1px solid lightgray;
 		padding-bottom: 5px;
 	}
 }
@@ -241,11 +241,11 @@ main {
 }
 
 .filter-button-include{
-	
+	background-color: #017aa6;
 }
 
 .filter-button-include:hover{
-	
+	background-color: #1a87af;
 }
 
 .background-cover {
@@ -324,6 +324,10 @@ main {
 	.filters-window{
 		border-color: grey;
 		background-color: #121212;
+
+		.filter-section{
+			border-bottom: 1px solid darkgray;
+		}
 	}
 
 	.filter-button {
