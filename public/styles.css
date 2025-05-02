@@ -68,8 +68,9 @@ main {
 	background-color: #5c5c5c;
 }
 
-.scrolling{ 
+.vertical-only-scrolling{ 
 	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .brew-nav-table {
