@@ -12,6 +12,7 @@ header {
   width: 100%;
   justify-content: space-between;
   height: 80px;
+  positon: relative;
 }
 
 main {
