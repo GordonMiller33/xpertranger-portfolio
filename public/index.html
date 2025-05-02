@@ -21,48 +21,46 @@
 			</select>
 		</nav> -->
 		<main>
-			<div class="display-area flex-row">
-				<div style="padding:20px;">
-					<div>
-						<table  class="brew-nav-table">
-							<tr>
-								<th colspan="2">
-									<button ng-click="showFilterWindow()" class="clickable-header table-filter">
-										Filter
-									</button>
-								</th>
-							</tr>
-							<tr>
-								<th colspan="2">
-									<input type="text" placeholder="Search" ng-model="searchText" class="search"></input>
-								</th>
-							</tr>
-							<tr>
-								<th style="min-width: 80px">
-									<button ng-click="setCurrentSort('title')" class="clickable-header">
-										Title<span ng-if="currentSort === 'title'">{{ reverseSort ? '↑' : '↓' }}</span>
-									</button>
-								</th>
-								<th style="min-width: 80px">
-									<button ng-click="setCurrentSort('category')" class="clickable-header">
-										Category<span ng-if="currentSort === 'category'">{{ reverseSort ? '↑' : '↓' }}</span>
-									</button>
-								</th>
-							</tr>
-							<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew), }" 
-							ng-click="selectBrew(brew.id)" 
-							ng-repeat="brew in brews | filter:searchByTitleFilter | orderBy:currentSort:reverseSort">
-								<td>{{brew.title}}</td>
-								<td>{{brew.category}}</td>
-							</tr>
-						</table>
-					</div>
-					<div class="table-display-area">
-						<div class="brew-display">
-							<section ng-repeat="brew in brews" ng-if="brew.id === selectedBrew">
-								<div ng-bind-html="brew.content"></div>
-							</section>
-						</div>
+			<div class="display-area flex-row" style="padding: 20px;">
+				<div>
+					<table  class="brew-nav-table">
+						<tr>
+							<th colspan="2">
+								<button ng-click="showFilterWindow()" class="clickable-header table-filter">
+									Filter
+								</button>
+							</th>
+						</tr>
+						<tr>
+							<th colspan="2">
+								<input type="text" placeholder="Search" ng-model="searchText" class="search"></input>
+							</th>
+						</tr>
+						<tr>
+							<th style="min-width: 80px">
+								<button ng-click="setCurrentSort('title')" class="clickable-header">
+									Title<span ng-if="currentSort === 'title'">{{ reverseSort ? '↑' : '↓' }}</span>
+								</button>
+							</th>
+							<th style="min-width: 80px">
+								<button ng-click="setCurrentSort('category')" class="clickable-header">
+									Category<span ng-if="currentSort === 'category'">{{ reverseSort ? '↑' : '↓' }}</span>
+								</button>
+							</th>
+						</tr>
+						<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew), }" 
+						ng-click="selectBrew(brew.id)" 
+						ng-repeat="brew in brews | filter:searchByTitleFilter | orderBy:currentSort:reverseSort">
+							<td>{{brew.title}}</td>
+							<td>{{brew.category}}</td>
+						</tr>
+					</table>
+				</div>
+				<div class="table-display-area">
+					<div class="brew-display">
+						<section ng-repeat="brew in brews" ng-if="brew.id === selectedBrew">
+							<div ng-bind-html="brew.content"></div>
+						</section>
 					</div>
 				</div>
 			</div>
