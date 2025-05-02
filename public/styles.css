@@ -267,7 +267,7 @@ main {
 }
 
 .close-button {
-	background-color: #d6382d;
+	background-color: #017aa6;
 	color: white;
 	fontweight: bold;
 	width: 26px;
@@ -276,12 +276,12 @@ main {
 	text-align: center;
 	margin: 5px;
 	border-radius: 3px;
-	border: 1px solid #e81305;
+	border: 1px solid #0290C3;
 }
 
 .close-button:hover {
-	box-shadow: 0px 0px 5px red;
-	background-color: #e03024;
+	box-shadow: 0px 0px 5px #009ED6;
+	background-color: #009ED6;
 }
 
 .dark-mode {
