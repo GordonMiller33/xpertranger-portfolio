@@ -19,6 +19,7 @@ main {
 	min-height: 600px;
 	overflow-y: auto;
 	width:100%;
+	position:relative;
 }
 
 .no-display {
