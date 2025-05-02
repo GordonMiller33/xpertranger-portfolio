@@ -149,8 +149,8 @@ app.controller('MainController', function($scope, $http) {
 		console.log("Active filters:", $scope.activeFilters);
 	}
 
-	$scope.applyFilters = function() {
-		$scope.getBrews(false);
+	$scope.applyFilters = async function() {
+		await $scope.getBrews(false);
 		for (let j = 0; j < $scope.brews.length; j++){
 			for (let i = 0; i < $scope.activeFilters.length; i++){
 				if($scope.brews[j].category != $scope.activeFilters[i]){
