@@ -44,7 +44,7 @@ main {
 	flex-direction: row;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   .table-and-brew-box {
 		display: flex;
 		flex-direction: column;
