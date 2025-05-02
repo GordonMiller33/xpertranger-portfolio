@@ -86,6 +86,7 @@ main {
 	}
 	th:hover{
 		box-shadow: 0px 0px 5px green;
+		z-index: 1;
 	}
 	td{
 		border-right: 0px;
