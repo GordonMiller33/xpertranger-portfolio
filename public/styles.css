@@ -208,6 +208,17 @@ main {
 
 .filter-header{
 	justify-content: space-between;
+	border-bottom: 1px solid grey;
+}
+
+.background-cover {
+	background-color: darkgray;
+	opacity: 0.5;
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	top: 0px;
+	left: 0px;
 }
 
 .close-button {
