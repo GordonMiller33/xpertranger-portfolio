@@ -85,17 +85,15 @@ main {
 		width: 200px;
 	}
 	th:hover{
-		border: 1px solid black;
-		box-shadow: 0px 0px 3px green;
+		box-shadow: 0px 0px 5px green;
 	}
 	td{
 		border-right: 0px;
 		border-left: 0px;
 	}
-}
-
-.brew-nav-table tr{
+	tr{
 	height: 10px;
+	}
 }
 
 .unselected-tr:hover{
@@ -137,7 +135,7 @@ main {
 
 .search:focus {
 	outline:none;
-	box-shadow: 0px 0px 3px green;
+	box-shadow: 0px 0px 5px green;
 }
 
 .brew-display{
