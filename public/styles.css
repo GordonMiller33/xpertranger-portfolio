@@ -169,7 +169,7 @@ main {
 	border: 1px solid black;
 	border-radius: 5px;
 	background-color: #ffffff;
-	box-shadow: 2px 2px black;
+	box-shadow: 2px 2px 5px black;
 }
 
 .filter-header{
@@ -180,8 +180,8 @@ main {
 	background-color: red;
 	color: white;
 	fontweight: bold;
-	width: 20px;
-	height: 20px;
+	width: 26px;
+	height: 26px;
 	font-size: 18px;
 	text-align: center;
 }
