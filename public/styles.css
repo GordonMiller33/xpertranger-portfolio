@@ -39,6 +39,19 @@ main {
 	flex-direction: row;
 }
 
+.table-and-brew-box {
+	display: flex;
+	flex-direction: row;
+}
+
+@media (max-width: 900px) {
+  .table-and-brew-box {
+		display: flex;
+		flex-direction: column;
+		justify-content: left;
+	}
+}
+
 .display-area{
 	position: absolute;
 	display: flex;
@@ -80,7 +93,7 @@ main {
 	border-spacing: 0px;
 	margin: 0 10px;
 	border-collapse: collapse;
-	font-size: 16px;
+	font-size: 20px;
 	
 	td,th{
 		border: 1px solid grey;
@@ -119,7 +132,6 @@ main {
 	background-color: inherit;
 	color: inherit;
 	font-weight: bold;
-	font-size: 16px;
 }
 
 .search {
@@ -159,7 +171,7 @@ a:hover{
 	background: #f7ebcb;
 	color: black;
 	font-family:Libre Baskerville,serif;
-	font-size:16px;
+	font-size:18px;
 	padding: 20px;
 	border-top: 4px solid #daa520;
 	border-bottom: 4px solid #daa520;
@@ -174,7 +186,7 @@ a:hover{
 	/*colorless headers*/
 	h5,h6{
 		color: black;
-		font-size: 16px;
+		font-size: 18px;
 		margin-top: 10px;
 		margin-bottom: 4px;
 	}
@@ -184,12 +196,12 @@ a:hover{
 	}
 
 	h1{
-		font-size:24px
+		font-size:26px
 	}
 
 	/*header 2 underline*/
 	h2{
-		font-size:20px;
+		font-size:22px;
 		border-bottom:2px solid #daa520
 	}
 
