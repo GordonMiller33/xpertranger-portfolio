@@ -181,7 +181,7 @@ main {
 }
 
 .close-button{
-	background-color: red;
+	background-color: #d6382d;
 	color: white;
 	fontweight: bold;
 	width: 26px;
@@ -189,7 +189,8 @@ main {
 	font-size: 18px;
 	text-align: center;
 	margin: 5px;
-	border: none;
+	border-radius: 3px;
+	border: 1px solid #e32012;
 }
 
 .dark-mode {
