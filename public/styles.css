@@ -14,7 +14,7 @@ header {
 }
 
 .no-display {
-	display:none;
+	display:none !important;
 }
 
 .column {

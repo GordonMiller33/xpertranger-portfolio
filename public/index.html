@@ -21,12 +21,6 @@
 			</select>
 		</nav>
 		<main>
-			<div class="display-area" ng-class="{ 'no-display' : (filtersHidden) }">
-				<div class="filters-window">
-					temp filter text
-					<button ng-click="hideFilterWindow()">Close filter window</button>
-				</div>
-			</div>	
 			<div class="display-area row">
 				<div>
 					<table  class="brew-nav-table">
@@ -57,8 +51,8 @@
 						<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew), }" 
 						ng-click="selectBrew(brew.id)" 
 						ng-repeat="brew in brews | filter:searchText | orderBy:currentSort:reverseSort">
-							<td>{{brew.title}}</th>
-							<td>{{brew.category}}</th>
+							<td>{{brew.title}}</td>
+							<td>{{brew.category}}</td>
 						</tr>
 					</table>
 				</div>
@@ -68,6 +62,13 @@
 							<div ng-bind-html="brew.content"></div>
 						</section>
 					</div>
+				</div>
+			</div>
+			<div class="display-area row" ng-click="hideFilterWindow()"></div>
+			<div class="display-area" ng-class="{ 'no-display' : (filtersHidden) }">
+				<div class="filters-window">
+					temp filter text
+					<button ng-click="hideFilterWindow()">Close filter window</button>
 				</div>
 			</div>
 			<!-- <div class="display-area row">
