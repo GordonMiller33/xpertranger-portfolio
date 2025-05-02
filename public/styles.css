@@ -48,17 +48,19 @@ main {
 }
 
 .dark-mode-icon {
-	width: 28px;
-	height: 28px;
-	color: #262626;
+	width: 26px;
+	height: 26px;
+	color: white;
 }
 
 .dark-mode-button {
 	background-color: inherit;
 	border: 0px;
 	border-radius: 3px;
-	font-size: 24px;
+	font-size: 20px;
 	color: white;
+	display: flex;
+  flex-direction: row;
 }
 
 .dark-mode-button:hover {
