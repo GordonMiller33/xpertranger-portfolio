@@ -230,22 +230,30 @@ main {
 }
 
 .filter-button{
-	color: black;
+	color: white;
 	font-size: 14px;
 	margin: 5px;
 	margin-left: 0px;
 }
 
 .filter-button-default{
-	
+	background-color: #7B7B7B;
+	border: 1px solid #565656;
+}
+
+.filter-button-default{
+	box-shadow: 0px 0px 5px #565656;
+	background-color: #313131;
 }
 
 .filter-button-include{
 	background-color: #017aa6;
+	border: 1px solid #0290C3;
 }
 
 .filter-button-include:hover{
-	background-color: #1a87af;
+	box-shadow: 0px 0px 5px #009ED6;
+	background-color: #009ED6;
 }
 
 .background-cover {
