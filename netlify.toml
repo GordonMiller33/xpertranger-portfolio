@@ -1,6 +1,6 @@
 [[redirects]]
   from = "/brews/*"
-  to = "https://your-backend-server-url.com/brews/:splat"
+  to = "https://xpertranger-portfolio.onrender.com/brews/:splat"
   status = 200
   force = true
 
