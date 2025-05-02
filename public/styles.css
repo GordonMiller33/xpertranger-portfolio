@@ -217,8 +217,8 @@ main {
 	position: absolute;
 	width: 100vw;
 	height: 100vh;
-	top: 0px;
-	left: 0px;
+	top: -80px;
+	left: -20px;
 }
 
 .close-button {
