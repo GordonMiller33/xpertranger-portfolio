@@ -41,7 +41,7 @@ app.controller('MainController', function($scope, $http) {
 	$scope.searchText = "";
 
 	$scope.searchByTitleFilter = function(item) {
-		return $scope.searchText.toLowerCase() === item.title.toLowerCase();
+		return item.title.toLowerCase().includes($scope.searchText.toLowerCase());
 	}
 
 	$scope.brews = [];
