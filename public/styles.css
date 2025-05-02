@@ -232,7 +232,8 @@ main {
 .filter-button{
 	color: black;
 	font-size: 14px;
-	margin-right: 10px;
+	margin: 5px;
+	margin-left: 0px;
 }
 
 .filter-button-default{
