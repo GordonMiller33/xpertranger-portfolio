@@ -75,13 +75,14 @@
 			</div>
 			<div class="display-area flex-row" ng-click="hideFilterWindow()" ng-class="{ 'no-display' : (filtersHidden) }">
 				<div class="flex-col" style="justify-content:center;">
+					<div class="background-cover" ng-click="hideFilterWindow()"></div>
 					<div class="filters-window">
 						<div class="filter-header flex-row">
 							<div class="flex-row">
 								<h3 style="padding-right:5px;">Filters</h3>
 								<input type="text" placeholder="Search" ng-model="filterSearchText" class="search"></input>
 							</div>
-							<div>
+							<div class="flex-col" style="justify-content: center;">
 								<button ng-click="hideFilterWindow()" class="close-button">X</button>
 							</div>
 						</div>
