@@ -96,7 +96,7 @@ main {
 		border-left: 0px;
 	}
 	tr{
-	height: 10px;
+		height: 10px;
 	}
 }
 
@@ -174,10 +174,9 @@ a:hover{
 	/*colorless headers*/
 	h5,h6{
 		color: black;
-		line-height:0;
 		font-size: 16px;
-		margin-top: 5px;
-		margin-bottom: 2px;
+		margin-top: 10px;
+		margin-bottom: 4px;
 	}
 
 	h1:first-letter,h2:first-letter,h3:first-letter,h4:first-letter{
@@ -219,6 +218,10 @@ a:hover{
 
 	li{
 		padding-top:6px;
+	}
+
+	table {
+		border-collapse: collapse;
 	}
 
 	/*table odd rows color*/
