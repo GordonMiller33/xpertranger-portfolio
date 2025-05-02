@@ -66,10 +66,12 @@
 			</div>
 			<div class="display-area flex-row" ng-click="hideFilterWindow()"
 			 ng-class="{ 'no-display' : (filtersHidden) }"></div>
-			<div class="display-area" ng-class="{ 'no-display' : (filtersHidden) }">
-				<div class="filters-window">
-					temp filter text
-					<button ng-click="hideFilterWindow()">Close filter window</button>
+			<div class="display-area flex-row" ng-class="{ 'no-display' : (filtersHidden) }">
+				<div class="display-area flex-col">
+					<div class="filters-window">
+						temp filter text
+						<button ng-click="hideFilterWindow()">Close filter window</button>
+					</div>
 				</div>
 			</div>
 			<!-- <div class="display-area flex-row">
