@@ -219,14 +219,14 @@ main {
 		margin:0px;
 	}
 
-	.flex-row {
-		border-bottom: 1px solid grey;
-	}
+	.filter-section{
+	border-bottom: 1px solid grey;
+	margin-bottom: 5px;
+}
 }
 
 .filter-header{
 	justify-content: space-between;
-	margin-bottom: 5px;
 }
 
 .filter-button{
