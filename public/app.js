@@ -44,6 +44,8 @@ app.controller('MainController', function($scope, $http) {
 	}
 
 	$scope.brews = [];
+	$scope.allBrews = [];
+
 	$scope.categories = [];
 	$scope.selectedGenre = '';
 	$scope.newBrewTitle = "";
@@ -64,9 +66,11 @@ app.controller('MainController', function($scope, $http) {
             .then(function(response) {
                 console.log('API response:', response);
                 if (response && response.data) {
-                    $scope.brews = response.data;
+                    $scope.allBrews = response.data;
                     console.log('Brews loaded:', $scope.brews.length, 'items');
                     
+                    $scope.brews = [...$scope.allBrews];
+
                     $scope.brews.sort(function(a, b) {
 					  	return a.title.localeCompare(b.title);
 					});
@@ -76,8 +80,6 @@ app.controller('MainController', function($scope, $http) {
 
                     $scope.ids = [...new Set($scope.brews.map(brew => brew.id))];
                     $scope.nextId = parseInt(Math.max(...$scope.ids))+1;
-
-                    $scope.brews = $scope.brews;
 
                     if ($scope.brews.length > 0) {
                         $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
@@ -149,14 +151,13 @@ app.controller('MainController', function($scope, $http) {
 	}
 
 	$scope.applyFilters = function() {
-	    $scope.getBrews(false).then(function() {
-	        if ($scope.activeFilters.length > 0) {
-	            $scope.brews = $scope.brews.filter(function(brew) {
-	                return $scope.activeFilters.includes(brew.category);
-	            });
-	        }
-	        $scope.hideFilterWindow();
-	    });
+		$scope.brews = [...$scope.allBrews];
+        if ($scope.activeFilters.length > 0) {
+            $scope.brews = $scope.brews.filter(function(brew) {
+                return $scope.activeFilters.includes(brew.category);
+            });
+        }
+        $scope.hideFilterWindow();
 	};
 
 });
