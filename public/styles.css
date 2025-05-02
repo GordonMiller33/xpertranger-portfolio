@@ -98,7 +98,7 @@ main {
 	td,th{
 		border: 1px solid grey;
 		padding: 0px;
-		width: 200px;
+		min-width: 200px;
 	}
 	th:hover{
 		box-shadow: 0px 0px 5px green;
