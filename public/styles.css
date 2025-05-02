@@ -18,6 +18,7 @@ main {
 	height: calc(100vh - 80px);
 	min-height: 600px;
 	overflow-y: auto;
+	width:100%;
 }
 
 .no-display {
