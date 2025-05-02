@@ -142,6 +142,18 @@ main {
 	box-shadow: 0px 0px 5px green;
 }
 
+a{
+	color: #88b980;
+}
+
+a:visited{
+	color: #386F2F;
+}
+
+a:hover{
+	color: #A2D69A;
+}
+
 .brew-display{
 	width: 650px;
 	background: #f7ebcb;
@@ -152,16 +164,20 @@ main {
 	border-top: 4px solid #daa520;
 	border-bottom: 4px solid #daa520;
 
+	/*color headers*/
 	h1,h2,h3,h4{
 		color:#247110;
 		margin:6px 0 12px;
 		text-transform:uppercase;
 	}
 
+	/*colorless headers*/
 	h5,h6{
 		color: black;
 		line-height:0;
 		font-size: 16px;
+		margin-top: 5px;
+		margin-bottom: 2px;
 	}
 
 	h1:first-letter,h2:first-letter,h3:first-letter,h4:first-letter{
@@ -172,6 +188,7 @@ main {
 		font-size:24px
 	}
 
+	/*header 2 underline*/
 	h2{
 		font-size:20px;
 		border-bottom:2px solid #daa520
@@ -202,6 +219,11 @@ main {
 
 	li{
 		padding-top:6px;
+	}
+
+	/*table odd rows color*/
+	table tbody tr:nth-child(odd) {
+		background-color: #DCCA99
 	}
 }
 
@@ -308,6 +330,10 @@ main {
 			background-color:#2E2D24; 
 			border-left:2px solid #B8A88C;
 			border-right:2px solid #B8A88C;
+		}
+		
+		table tbody tr:nth-child(odd) {
+			background-color: #DCCA99
 		}
 	}
 	
