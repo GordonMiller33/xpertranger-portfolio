@@ -226,8 +226,14 @@ main {
 	margin-bottom: 5px;
 }
 
-.filter-button-default{
+.filter-button{
 	color: black;
+	font-size: 14;
+	margin-right: 10px;
+}
+
+.filter-button-default{
+	
 }
 
 .background-cover {
@@ -308,12 +314,15 @@ main {
 		background-color: #121212;
 	}
 
-	.filter-button-default{
+	.filter-button {
 		color: white;
-		background-color: #5c5c5c;
 	}
 
 	.filter-button-default{
+		background-color: #5c5c5c;
+	}
+
+	.filter-button-default:hover{
 		background-color: $666666;
 	}
 }

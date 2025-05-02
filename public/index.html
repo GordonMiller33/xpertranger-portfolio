@@ -90,9 +90,11 @@
 						</div>
 						<h3>Category</h3>
 						<br>
-						<button class="basic-button filter-button-default" ng-repeat="category in categories">
-							{{ category }}
-						</button>
+						<div class="flex-row" style="justify-content:left;">
+							<button class="basic-button filter-button filter-button-default" ng-repeat="category in categories">
+								{{ category }}
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
