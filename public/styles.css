@@ -93,7 +93,7 @@ main {
 	border-spacing: 0px;
 	margin: 0 10px;
 	border-collapse: collapse;
-	font-size: 20px;
+	font-size: 18px;
 	
 	td,th{
 		border: 1px solid grey;
@@ -132,7 +132,7 @@ main {
 	background-color: inherit;
 	color: inherit;
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .search {
