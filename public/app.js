@@ -149,13 +149,14 @@ app.controller('MainController', function($scope, $http) {
 	}
 
 	$scope.applyFilters = function() {
-	    $scope.getBrews(false)
-        if ($scope.activeFilters.length > 0) {
-            $scope.brews = $scope.brews.filter(function(brew) {
-                return $scope.activeFilters.includes(brew.category);
-            });
-        }
-        $scope.hideFilterWindow();
-	}
+	    $scope.getBrews(false).then(function() {
+	        if ($scope.activeFilters.length > 0) {
+	            $scope.brews = $scope.brews.filter(function(brew) {
+	                return $scope.activeFilters.includes(brew.category);
+	            });
+	        }
+	        $scope.hideFilterWindow();
+	    });
+	};
 
 });
