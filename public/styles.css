@@ -218,21 +218,32 @@ main {
 	h3 {
 		margin:0px;
 	}
+
+	.flex-row {
+		border-bottom: 1px solid grey;
+	}
 }
 
 .filter-header{
 	justify-content: space-between;
-	border-bottom: 1px solid grey;
 	margin-bottom: 5px;
 }
 
 .filter-button{
 	color: black;
-	font-size: 14;
+	font-size: 14px;
 	margin-right: 10px;
 }
 
 .filter-button-default{
+	
+}
+
+.filter-button-include{
+	
+}
+
+.filter-button-include:hover{
 	
 }
 
@@ -323,7 +334,7 @@ main {
 	}
 
 	.filter-button-default:hover{
-		background-color: $666666;
+		background-color: #666666;
 	}
 }
 
