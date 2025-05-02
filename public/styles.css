@@ -56,7 +56,6 @@ main {
 	background-color: #474747;
 	border: 1px solid #5c5c5c;
 	border-radius: 50px;
-	justify-content: center;
 }
 
 .dark-mode-button:hover {
