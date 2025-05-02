@@ -69,17 +69,16 @@
 			<div class="display-area flex-row" ng-class="{ 'no-display' : (filtersHidden) }">
 				<div class="flex-col" style="justify-content:center;">
 					<div class="filters-window">
-						<div class="filter-header">
+						<div class="filter-header flex-row">
 							<div>
 								<h2>Filters</h2>
 								<input type="text" placeholder="Search" ng-model="filterSearchText" class="search"></input>
 							</div>
 							<div>
-								<button ng-click="hideFilterWindow()">Close</button>
+								<button ng-click="hideFilterWindow()" class="close-button">X</button>
 							</div>
 						</div>
 						temp filter text
-						
 					</div>
 				</div>
 			</div>

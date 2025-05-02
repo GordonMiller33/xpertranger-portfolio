@@ -172,6 +172,10 @@ main {
 	box-shadow: 2px 2px black;
 }
 
+.filter-header{
+	justify-content: space-between;
+}
+
 .close-button{
 	background-color: red;
 	color: white;
