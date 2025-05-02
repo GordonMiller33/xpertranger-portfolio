@@ -45,17 +45,17 @@ main {
 }
 
 .dark-mode-icon {
-	width: 24px;
-	height: 24px;
+	width: 48px;
+	height: 48px;
 	color: #262626;
 }
 
 .dark-mode-button {
-	width: 26px;
-	height: 26px;
+	width: 52px;
+	height: 52px;
 	background-color: #e1e3e1;
 	border: 1px solid grey;
-	border-radius: 40px;
+	border-radius: 50px;
 	justify-content: center;
 }
 
