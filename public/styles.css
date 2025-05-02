@@ -237,13 +237,13 @@ main {
 }
 
 .filter-button-default{
-	background-color: #7B7B7B;
-	border: 1px solid #565656;
+	background-color: #7F7F7F;
+	border: 1px solid #646464;
 }
 
-.filter-button-default{
-	box-shadow: 0px 0px 5px #565656;
-	background-color: #313131;
+.filter-button-default:hover{
+	box-shadow: 0px 0px 5px #484848;
+	background-color: #646464;
 }
 
 .filter-button-include{
@@ -345,7 +345,7 @@ main {
 		border: 1px solid #565656;
 	}
 
-	.filter-button-default{
+	.filter-button-default:hover{
 		box-shadow: 0px 0px 5px #565656;
 		background-color: #313131;
 	}
