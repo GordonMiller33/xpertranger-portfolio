@@ -153,9 +153,11 @@ app.controller('MainController', function($scope, $http) {
 			for (let i = 0; i < $scope.activeFilters.length; i++){
 				if($scope.filteredBrews[j].category != $scope.activeFilters[i]){
 					$scope.filteredBrews.splice(j, 1);
+					break;
 				}
 			}
 		}
+		$scope.hideFilterWindow();
 	}
 
 });
