@@ -202,8 +202,12 @@ main {
 	border-radius: 5px;
 	background-color: #ffffff;
 	box-shadow: 2px 2px 5px black;
-	padding: 15px;
-	padding-top: 0px;
+	padding: 10px;
+	z-index: 1;
+
+	h3 {
+		margin:0px;
+	}
 }
 
 .filter-header{
@@ -214,11 +218,11 @@ main {
 .background-cover {
 	background-color: darkgray;
 	opacity: 0.5;
-	position: absolute;
+	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	top: -80px;
-	left: -20px;
+	top: 0px;
+	left: 0px;
 }
 
 .close-button {
