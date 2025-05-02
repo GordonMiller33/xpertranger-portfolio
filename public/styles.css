@@ -11,18 +11,25 @@ header {
   color: white;
   width: 100%;
   justify-content: space-between;
+  height: 80px;
+}
+
+main {
+	height: calc(100vh - 80px);
+	min-height: 600px;
+	overflow-y: auto;
 }
 
 .no-display {
 	display:none !important;
 }
 
-.column {
+.flex-col {
 	display: flex;
 	flex-direction: column;
 }
 
-.row {
+.flex-row {
 	display: flex;
 	flex-direction: row;
 }

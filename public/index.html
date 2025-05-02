@@ -9,19 +9,19 @@
 		<script src="app.js"></script>
 	</head>
 	<body ng-class="{ 'dark-mode': darkMode }" ng-controller="MainController">
-		<header class="row">
-			<h1 class="column">Xpertranger Portfolio</h1>
-			<button class="column" ng-click="toggleDarkMode()">Dark Mode</button>
+		<header class="flex-row">
+			<h1 class="flex-column">Xpertranger Portfolio</h1>
+			<button class="flex-column" ng-click="toggleDarkMode()">Dark Mode</button>
 		</header>
-		<nav>
+		<!-- <nav>
 			<label>Filter by Category:</label>
 			<select ng-model="selectedCategory">
 				<option value="">All</option>
 				<option ng-repeat="category in categories">{{ category }}</option>
 			</select>
-		</nav>
+		</nav> -->
 		<main>
-			<div class="display-area row">
+			<div class="display-area flex-row">
 				<div>
 					<table  class="brew-nav-table">
 						<tr>
@@ -64,14 +64,15 @@
 					</div>
 				</div>
 			</div>
-			<div class="display-area row" ng-click="hideFilterWindow()"></div>
+			<div class="display-area flex-row" ng-click="hideFilterWindow()"
+			 ng-class="{ 'no-display' : (filtersHidden) }"></div>
 			<div class="display-area" ng-class="{ 'no-display' : (filtersHidden) }">
 				<div class="filters-window">
 					temp filter text
 					<button ng-click="hideFilterWindow()">Close filter window</button>
 				</div>
 			</div>
-			<!-- <div class="display-area row">
+			<!-- <div class="display-area flex-row">
 				<label>Enter Title:</label>
 				<input type="text" ng-model="newBrewTitle"></input>
 				<label>Enter Category:</label>
