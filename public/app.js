@@ -127,7 +127,7 @@ app.controller('MainController', function($scope, $http) {
 	$scope.activeFilters = [];
 
 	$scope.isActiveFilter = function(filter) {
-		for (let i = 0; i < $scope.activeFilters.length(); i++){
+		for (let i = 0; i < $scope.activeFilters.length; i++){
 			if ($scope.activeFilters[i] === filter){ return true; }
 		}
 		return false;
@@ -140,7 +140,7 @@ app.controller('MainController', function($scope, $http) {
 
 	$scope.removeFilter = function(filter) {
 		console.log("removing filter:", filter);
-		for (let i = 0; i < $scope.activeFilters.length(); i++){
+		for (let i = 0; i < $scope.activeFilters.length; i++){
 			if ($scope.activeFilters[i] === filter){ $scope.activeFilters.splice(i, 1); }
 		}
 	}
