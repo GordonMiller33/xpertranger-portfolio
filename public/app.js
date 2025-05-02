@@ -78,6 +78,8 @@ app.controller('MainController', function($scope, $http) {
                     $scope.ids = [...new Set($scope.brews.map(brew => brew.id))];
                     $scope.nextId = parseInt(Math.max(...$scope.ids))+1;
 
+                    $scope.filteredBrews = $scope.brews;
+
                     if ($scope.brews.length > 0) {
                         $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
                         console.log('Categories:', $scope.categories);
@@ -142,6 +144,17 @@ app.controller('MainController', function($scope, $http) {
 		console.log("removing filter:", filter);
 		for (let i = 0; i < $scope.activeFilters.length; i++){
 			if ($scope.activeFilters[i] === filter){ $scope.activeFilters.splice(i, 1); }
+		}
+	}
+
+	$scope.applyFilters = function() {
+		$scope.filteredBrews = $scope.brews;
+		for (let j = 0; j < $scope.filteredBrews; j++){
+			for (let i = 0; i < $scope.activeFilters.length; i++){
+				if($scope.filteredBrews[j].category != $scope.activeFilters[i]){
+					$scope.filteredBrews.splice(j, 1);
+				}
+			}
 		}
 	}
 
