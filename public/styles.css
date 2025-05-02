@@ -280,12 +280,6 @@ main {
 		}
 	}
 	
-	.brew-nav-table {
-		th:hover{
-			border: 1px solid white;
-		}
-	}
-	
 	.unselected-tr:hover{
 		background-color:  #2b2b2b
 	}
