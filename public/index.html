@@ -77,7 +77,7 @@
 				<div class="flex-col" style="justify-content:center;">
 					<div class="background-cover" ng-click="hideFilterWindow()"></div>
 					<div class="filters-window">
-						<div class="filter-header flex-row filter-section">
+						<div class="filter-header flex-row">
 							<div class="flex-col" style="justify-content: center;">
 								<div class="flex-row">
 									<h3 style="margin-right: 5px;">Filters</h3>
@@ -88,11 +88,13 @@
 								<button ng-click="hideFilterWindow()" class="close-button">X</button>
 							</div>
 						</div>
-						<h3>Category</h3>
-						<div class="flex-row filter-section" style="justify-content:left;">
-							<button class="basic-button filter-button filter-button-default" ng-repeat="category in categories | filter:filterSearchText">
-								{{ category }}
-							</button>
+						<div class="filter-section">
+							<h3>Category</h3>
+							<div class="flex-row" style="justify-content:left;">
+								<button class="basic-button filter-button filter-button-default" ng-repeat="category in categories | filter:filterSearchText">
+									{{ category }}
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
