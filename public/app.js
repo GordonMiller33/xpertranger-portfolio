@@ -35,7 +35,6 @@ app.controller('MainController', function($scope, $http) {
 	$scope.hideFilterWindow = function() {
 		console.log("Closing filter window");
 		$scope.filtersHidden = true;
-		//does getbrews and a bunch of filtering
 	}
 
 	$scope.searchText = "";
@@ -95,7 +94,7 @@ app.controller('MainController', function($scope, $http) {
             });
     };
     
-    $scope.getBrews(false);
+    //$scope.getBrews(false);
 	
 	$scope.addBrew = function() {
 		const apiUrl = '/brews';

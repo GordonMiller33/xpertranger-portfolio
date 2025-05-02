@@ -8,7 +8,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
 		<script src="app.js"></script>
 	</head>
-	<body ng-class="{ 'dark-mode': darkMode }" ng-controller="MainController">
+	<body ng-class="{ 'dark-mode': darkMode }" ng-controller="MainController" ng-init="getBrews(false)">
 		<header class="flex-row">
 			<h1 class="flex-col" style="justify-content:center;">Xpertranger Portfolio</h1>
 			<div class="flex-col" style="justify-content:center; height:inherit">
