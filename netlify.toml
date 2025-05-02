@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/brews/*"
+  to = "https://your-backend-server-url.com/brews/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
