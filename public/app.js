@@ -45,7 +45,6 @@ app.controller('MainController', function($scope, $http) {
 	}
 
 	$scope.brews = [];
-	$scope.filteredBrews = [];
 	$scope.categories = [];
 	$scope.selectedGenre = '';
 	$scope.newBrewTitle = "";
@@ -79,7 +78,7 @@ app.controller('MainController', function($scope, $http) {
                     $scope.ids = [...new Set($scope.brews.map(brew => brew.id))];
                     $scope.nextId = parseInt(Math.max(...$scope.ids))+1;
 
-                    $scope.filteredBrews = $scope.brews;
+                    $scope.brews = $scope.brews;
 
                     if ($scope.brews.length > 0) {
                         $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
@@ -151,13 +150,12 @@ app.controller('MainController', function($scope, $http) {
 	}
 
 	$scope.applyFilters = function() {
-		$scope.filteredBrews = $scope.brews;
-		console.log("Filtered Brews:", $scope.filteredBrews);
-		for (let j = 0; j < $scope.filteredBrews.length; j++){
+		$scope.getBrews(false);
+		for (let j = 0; j < $scope.brews.length; j++){
 			for (let i = 0; i < $scope.activeFilters.length; i++){
-				if($scope.filteredBrews[j].category != $scope.activeFilters[i]){
-					console.log("Filtering out brew:", $scope.filteredBrews[j]);
-					$scope.filteredBrews.splice(j, 1);
+				if($scope.brews[j].category != $scope.activeFilters[i]){
+					console.log("Filtering out brew:", $scope.brews[j]);
+					$scope.brews.splice(j, 1);
 				}
 			}
 		}

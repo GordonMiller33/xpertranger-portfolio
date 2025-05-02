@@ -58,7 +58,7 @@
 							</tr>
 							<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew), }" 
 							ng-click="selectBrew(brew.id)" 
-							ng-repeat="brew in filteredBrews | filter:searchByTitleFilter | orderBy:currentSort:reverseSort">
+							ng-repeat="brew in brews | filter:searchByTitleFilter | orderBy:currentSort:reverseSort">
 								<td>{{brew.title}}</td>
 								<td>{{brew.category}}</td>
 							</tr>
@@ -66,7 +66,7 @@
 					</div>
 					<div class="vertical-only-scrolling">
 						<div class="brew-display">
-							<section ng-repeat="brew in filteredBrews" ng-if="brew.id === selectedBrew">
+							<section ng-repeat="brew in brews" ng-if="brew.id === selectedBrew">
 								<div ng-bind-html="brew.content"></div>
 							</section>
 						</div>
