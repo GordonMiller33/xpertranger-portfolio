@@ -174,8 +174,8 @@ main {
 	border-radius: 5px;
 	background-color: #ffffff;
 	box-shadow: 2px 2px 5px black;
-	margin: 20px;
-	margin-top: 0px;
+	padding: 15px;
+	padding-top: 0px;
 }
 
 .filter-header{
