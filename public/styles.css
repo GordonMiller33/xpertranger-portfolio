@@ -68,8 +68,8 @@ main {
 	background-color: #5c5c5c;
 }
 
-.section-display-area{ 
-overflow-y: auto;
+.scrolling{ 
+	overflow-y: auto;
 }
 
 .brew-nav-table {

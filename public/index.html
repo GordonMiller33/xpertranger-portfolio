@@ -30,7 +30,7 @@
 		<main>
 			<div class="display-area">
 				<div class="flex-row" style="padding:20px;">
-					<div>
+					<div class="scrolling">
 						<table  class="brew-nav-table">
 							<tr>
 								<th colspan="2">
@@ -64,7 +64,7 @@
 							</tr>
 						</table>
 					</div>
-					<div class="table-display-area">
+					<div class="scrolling">
 						<div class="brew-display">
 							<section ng-repeat="brew in brews" ng-if="brew.id === selectedBrew">
 								<div ng-bind-html="brew.content"></div>
