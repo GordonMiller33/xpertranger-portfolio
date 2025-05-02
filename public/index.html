@@ -50,7 +50,7 @@
 						</tr>
 						<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew), }" 
 						ng-click="selectBrew(brew.id)" 
-						ng-repeat="brew in brews | filter:searchText | orderBy:currentSort:reverseSort">
+						ng-repeat="brew in brews | filter:searchByTitleFilter | orderBy:currentSort:reverseSort">
 							<td>{{brew.title}}</td>
 							<td>{{brew.category}}</td>
 						</tr>

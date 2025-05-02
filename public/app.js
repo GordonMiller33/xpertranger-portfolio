@@ -38,6 +38,12 @@ app.controller('MainController', function($scope, $http) {
 		//does getbrews and a bunch of filtering
 	}
 
+	$scope.searchText = "";
+
+	$scope.searchByTitleFilter = function(item) {
+		return $scope.searchText.toLowerCase() === item.title.toLowerCase();
+	}
+
 	$scope.brews = [];
 	$scope.categories = [];
 	$scope.selectedGenre = '';
