@@ -169,7 +169,7 @@ main {
 	border-color: 4px solid black;
 	border-radius: 2px;
 	background-color: #ffffff;
-	box-shadow: 5px 10px;
+	box-shadow: 2px 2px black;
 }
 
 .dark-mode {
