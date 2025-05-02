@@ -50,7 +50,6 @@ main {
 .basic-button {
 	border: 0px;
 	border-radius: 3px;
-	color: white;
 	display: flex;
   flex-direction: row;
 }
@@ -64,6 +63,7 @@ main {
 .dark-mode-button {
 	background-color: inherit;
 	font-size: 20px;
+	color: white;
 }
 
 .dark-mode-button:hover {
@@ -226,6 +226,10 @@ main {
 	margin-bottom: 5px;
 }
 
+.filter-button-default{
+	color: black;
+}
+
 .background-cover {
 	background-color: darkgray;
 	opacity: 0.5;
@@ -302,6 +306,15 @@ main {
 	.filters-window{
 		border-color: grey;
 		background-color: #121212;
+	}
+
+	.filter-button-default{
+		color: white;
+		background-color: #5c5c5c;
+	}
+
+	.filter-button-default{
+		background-color: $666666;
 	}
 }
 
