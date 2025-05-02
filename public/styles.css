@@ -166,10 +166,10 @@ main {
 .filters-window{
 	width: 700px;
 	height: 400px;
-	border-color: black;
-	border-width: 4px;
-	border-radius: 10px;
+	border-color: 4px solid black;
+	border-radius: 2px;
 	background-color: #ffffff;
+	box-shadow: 5px 10px;
 }
 
 .dark-mode {
@@ -220,7 +220,7 @@ main {
 	}
 
 	.filters-window{
-		border: 4px white;
+		border-color: white;
 		background-color: #121212;
 	}
 }
