@@ -152,7 +152,7 @@ app.controller('MainController', function($scope, $http) {
 
 	$scope.applyFilters = function() {
 		$scope.filteredBrews = $scope.brews;
-		console.log("Filtered Brews:", filteredBrews);
+		console.log("Filtered Brews:", $scope.filteredBrews);
 		for (let j = 0; j < $scope.filteredBrews.length; j++){
 			for (let i = 0; i < $scope.activeFilters.length; i++){
 				if($scope.filteredBrews[j].category != $scope.activeFilters[i]){
