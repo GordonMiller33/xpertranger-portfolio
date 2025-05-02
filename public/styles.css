@@ -44,11 +44,10 @@ main {
 	flex-direction: row;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1350px) {
   .table-and-brew-box {
 		display: flex;
 		flex-direction: column;
-		justify-content: left;
 	}
 }
 
@@ -84,16 +83,20 @@ main {
 	background-color: #5c5c5c;
 }
 
+.content-box {
+	margin: 0 10px;
+}
+
 .vertical-only-scrolling{ 
 	overflow-y: auto;
 	overflow-x: hidden;
+	min-height: 150px;
 }
 
 .brew-nav-table {
-	border-spacing: 0px;
-	margin: 0 10px;
 	border-collapse: collapse;
 	font-size: 18px;
+	width: 100%;
 	
 	td,th{
 		border: 1px solid grey;
@@ -168,7 +171,7 @@ a:hover{
 }
 
 .brew-display{
-	width: 650px;
+	width: 850px;
 	background: #f7ebcb;
 	color: black;
 	font-family:Libre Baskerville,serif;

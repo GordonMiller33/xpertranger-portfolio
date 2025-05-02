@@ -3,14 +3,19 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const brewsRoute = require('./routes/brews');
 const path = require('path');
+const livereload = require('livereload');
+const connectLivereload = require('connect-livereload');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(path.join(__dirname, 'public'));
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(connectLivereload());
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
