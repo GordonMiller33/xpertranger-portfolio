@@ -100,6 +100,10 @@ main {
 	font-size: 16px;
 }
 
+.search::placeholder {
+	color: darkgray;
+}
+
 .brew-display{
 	width: 650px;
 	background: #f7ebcb;
@@ -184,6 +188,8 @@ main {
 	height: 26px;
 	font-size: 18px;
 	text-align: center;
+	margin: 5px;
+	border: none;
 }
 
 .dark-mode {
@@ -231,6 +237,10 @@ main {
 	
 	.selected-tr:hover{
 		background-color: #375427;
+	}
+
+	.search::placeholder {
+		color: gray;
 	}
 
 	.filters-window{
