@@ -33,7 +33,7 @@ app.controller('MainController', function($scope, $http) {
 	}
 
 	$scope.hideFilterWindow = function() {
-		console.log("Closing filter window");
+		console.log("Hiding filter window");
 		$scope.filtersHidden = true;
 	}
 
@@ -140,6 +140,7 @@ app.controller('MainController', function($scope, $http) {
 		console.log("Adding filter:", filter);
 		$scope.activeFilters.push(filter);
 		console.log("Active filters:", $scope.activeFilters);
+		$scope.applyFilters();
 	}
 
 	$scope.removeFilter = function(filter) {
@@ -148,6 +149,7 @@ app.controller('MainController', function($scope, $http) {
 			if ($scope.activeFilters[i] === filter){ $scope.activeFilters.splice(i, 1); }
 		}
 		console.log("Active filters:", $scope.activeFilters);
+		$scope.applyFilters();
 	}
 
 	$scope.applyFilters = function() {
@@ -157,7 +159,12 @@ app.controller('MainController', function($scope, $http) {
                 return $scope.activeFilters.includes(brew.category);
             });
         }
-        $scope.hideFilterWindow();
+	};
+
+	$scope.closeFilterWindow = function() {
+		console.log("Closing filter window");
+		$scope.applyFilters();
+		$scope.hideFilterWindow();
 	};
 
 });
