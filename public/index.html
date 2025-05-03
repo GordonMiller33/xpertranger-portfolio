@@ -9,6 +9,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-sanitize.min.js"></script>
 		<script src="app.js"></script>
+		<script src="http://localhost:35729/livereload.js?snipver=1"></script>
 	</head>
 	<body ng-class="{ 'dark-mode': darkMode }" ng-controller="MainController">
 		<header class="flex-row">
@@ -32,7 +33,7 @@
 		<main>
 			<div class="display-area">
 				<div class="table-and-brew-box" style="padding:20px;">
-					<div class="vertical-only-scrolling">
+					<div class="content-box">
 						<table  class="brew-nav-table">
 							<tr>
 								<th colspan="2">
@@ -47,24 +48,28 @@
 								</th>
 							</tr>
 							<tr>
-								<th style="min-width: 80px">
+								<th>
 									<button ng-click="setCurrentSort('title')" class="clickable-header">
 										Title<span ng-if="currentSort === 'title'">{{ reverseSort ? '↑' : '↓' }}</span>
 									</button>
 								</th>
-								<th style="min-width: 80px">
+								<th>
 									<button ng-click="setCurrentSort('category')" class="clickable-header">
 										Category<span ng-if="currentSort === 'category'">{{ reverseSort ? '↑' : '↓' }}</span>
 									</button>
 								</th>
 							</tr>
-							<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew), }" 
-							ng-click="selectBrew(brew.id)" 
-							ng-repeat="brew in brews | filter:searchByTitleFilter | orderBy:currentSort:reverseSort">
-								<td>{{brew.title}}</td>
-								<td>{{brew.category}}</td>
-							</tr>
 						</table>
+						<div class="vertical-only-scrolling">
+							<table class="brew-nav-table">
+								<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew), }" 
+								ng-click="selectBrew(brew.id)" 
+								ng-repeat="brew in brews | filter:searchByTitleFilter | orderBy:currentSort:reverseSort">
+									<td>{{brew.title}}</td>
+									<td>{{brew.category}}</td>
+								</tr>
+							</table>
+						</div>
 					</div>
 					<div class="vertical-only-scrolling">
 						<div class="brew-display">
