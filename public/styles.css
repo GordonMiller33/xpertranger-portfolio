@@ -66,6 +66,10 @@ main {
   flex-direction: row;
 }
 
+.padding-right-14 {
+	padding-right: 14px;
+}
+
 .dark-mode-icon {
 	width: 26px;
 	height: 26px;
@@ -297,6 +301,16 @@ a:hover{
 .filter-button-include:hover{
 	box-shadow: 0px 0px 5px #009ED6;
 	background-color: #009ED6;
+}
+
+.filter-button-exclude{
+	background-color: #9E2B1E;
+	border: 1px solid #9E2B1E;
+}
+
+.filter-button-exclude:hover{
+	box-shadow: 0px 0px 5px #CE210D;
+	background-color: #CE210D;
 }
 
 .background-cover {

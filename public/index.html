@@ -47,38 +47,34 @@
 							</tr>
 						</table>
 						<table  class="brew-nav-table">
-							<tr ng-class="{ 'no-display': !(activeFilters.length > 0) }">
-								<th colspan="2" ng-class="{ 'active-filter-row': activeFilters.length > 0 }">
+							<tr ng-class="{ 'no-display': !(numActiveFilters > 0) }">
+								<th colspan="2" class="active-filter-row">
 									<div class="flex-row" style="justify-content:left;padding-left:10px">
 										<button class="basic-button filter-button"
-										ng-repeat="category in activeFilters"
-										ng-click="removeFilter(category)"
-										ng-class="{ 'filter-button-default': !isActiveFilter(category), 'filter-button-include': isActiveFilter(category), }" >
-											{{ category }}
+										ng-repeat="filter in filters"
+										ng-click="removeFilter(filter.name)"
+										ng-class="{ 'no-display': filter.state === 0, 'filter-button-include': filter.state === 1, 'filter-button-exclude': filter.state === 2 }" >
+											{{ filter.name }}
 										</button>
 									</div>
 								</th>
 							</tr>
 							<tr>
-								<th>
-									<button ng-click="setCurrentSort('title')" class="clickable-header">
-										Title<span ng-if="currentSort === 'title'">{{ reverseSort ? '↑' : '↓' }}</span>
-									</button>
-								</th>
-								<th>
-									<button ng-click="setCurrentSort('category')" class="clickable-header">
-										Category<span ng-if="currentSort === 'category'">{{ reverseSort ? '↑' : '↓' }}</span>
+								<th ng-repeat="column in columns">
+									<button ng-click="sortBy(column.relatedProperty)" class="clickable-header">
+										{{column.displayName}}<span ng-class="{ 'padding-right-14' : (currentSort != column.relatedProperty) }">
+											{{ getSortChar(column.relatedProperty) }}
+										</span>
 									</button>
 								</th>
 							</tr>
 						</table>
 						<div class="vertical-only-scrolling">
 							<table class="brew-nav-table">
-								<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew), }" 
+								<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew) }" 
 								ng-click="selectBrew(brew.id)" 
 								ng-repeat="brew in brews | filter:searchByTitleFilter | orderBy:currentSort:reverseSort">
-									<td>{{brew.title}}</td>
-									<td>{{brew.category}}</td>
+									<td ng-repeat="column in columns">{{ brew[column.relatedProperty] }}</td>
 								</tr>
 							</table>
 						</div>
@@ -116,10 +112,10 @@
 							<h3>Category</h3>
 							<div class="flex-row" style="justify-content:left;">
 								<button class="basic-button filter-button"
-								ng-repeat="category in categories | filter:filterSearchText"
-								ng-click="isActiveFilter(category) ? removeFilter(category) : addFilter(category)"
-								ng-class="{ 'filter-button-default': !isActiveFilter(category), 'filter-button-include': isActiveFilter(category), }" >
-									{{ category }}
+								ng-repeat="filter in filters | filter:filterSearchText"
+								ng-click="cycleFilterType(filter.name)"
+								ng-class="{ 'filter-button-default': filter.state === 0, 'filter-button-include': filter.state === 1, 'filter-button-exclude': filter.state === 2 }" >
+									{{ filter.name }}
 								</button>
 							</div>
 						</div>
