@@ -14,7 +14,7 @@ app.controller('MainController', function($scope, $http) {
 		{ relatedProperty: "category", displayName: "Category"}
 	];
 
-	$scope.currentSort = 'title'; 	//The field that is current beingused to sort the navigation table in alphabetical order
+	$scope.currentSort = 'title'; 	//Holds whichever field is currently being used to sort the navigation table in alphabetical order
 	$scope.reverseSort = false;		//A flag that is true when the nav table is bein gsorted in reverse order
 
 	//Sorts the nav table by whatever field is passed as a param
