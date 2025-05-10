@@ -10,11 +10,18 @@ app.controller('MainController', function($scope, $http) {
 
 	/* defines columns of the nav table */
 	$scope.columns = [
-		{ relatedProperty: "title", displayName: "Title"}, 
-		{ relatedProperty: "category", displayName: "Category"}
+		{ relatedProperty: "title", displayName: "Title", small: false}, 
+		{ relatedProperty: "category", displayName: "Category", small: false},
+		{ relatedProperty: "edition", displayName: "Edition", small: true}
 	];
 
-	$scope.currentSort = 'title'; 	//The field that is current beingused to sort the navigation table in alphabetical order
+
+	$scope.filters = [
+		{ relatedProperty: "category", displayName: "Category", options: []},
+		{ relatedProperty: "edition", displayName: "Edition", options: []}
+	];
+
+	$scope.currentSort = 'title'; 	//Holds whichever field is currently being used to sort the navigation table in alphabetical order
 	$scope.reverseSort = false;		//A flag that is true when the nav table is bein gsorted in reverse order
 
 	//Sorts the nav table by whatever field is passed as a param
@@ -61,7 +68,6 @@ app.controller('MainController', function($scope, $http) {
 	$scope.brews = [];
 	$scope.allBrews = [];
 	$scope.categories = [];
-	$scope.filters = [];
 
 	//sets a brew to the be the currently selected brew based on id
 	$scope.selectBrew = function(sid){
@@ -81,7 +87,7 @@ app.controller('MainController', function($scope, $http) {
                 console.log('API response:', response);
                 if (response && response.data) {
                     $scope.allBrews = response.data;
-                    console.log('Brews loaded:', $scope.allBrews.length, 'items');
+                    $scope.allBrews.sort((a,b) => a.title.localeCompare(b.title));
                     
                     $scope.brews = [...$scope.allBrews];
 
@@ -96,11 +102,25 @@ app.controller('MainController', function($scope, $http) {
                     $scope.nextId = parseInt(Math.max(...$scope.ids))+1;
 
                     if ($scope.brews.length > 0) {
-                        $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
-                        for (let i = 0; i < $scope.categories.length; i++){
-							$scope.filters.push({name: $scope.categories[i], state: 0});
-						}
-                        console.log('Categories:', $scope.categories);
+                    	for(let i = 0; i < $scope.filters.length; i++){
+                    		let temp = [...new Set($scope.brews.map(brew => brew[$scope.filters[i].relatedProperty]))]
+                    		for(let j = 0; j < temp.length; j++){
+                    			$scope.filters[i].options.push({ name: temp[j], state: 0 })
+                    		}
+                    		console.log($scope.filters[i].displayName, "options: ", $scope.filters[i].options );
+                    	}
+
+                        // $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
+                        // for (let i = 0; i < $scope.categories.length; i++){
+						// 	$scope.filters.push({name: $scope.categories[i], state: 0});
+						// }
+                        // console.log('Categories:', $scope.categories);
+                        // $scope.editions = [...new Set($scope.brews.map(brew => brew.edition))];
+                        // for (let i = 0; i < $scope.editions.length; i++){
+						// 	$scope.filters.push({name: $scope.editions[i], state: 0});
+						// }
+                        // console.log('Editions:', $scope.editions);
+                        // console.log('Filters:', $scope.filters);
                     } else {
                         console.warn('No brews found in the database');
                     }
@@ -146,65 +166,87 @@ app.controller('MainController', function($scope, $http) {
 
 	$scope.numIncludedFilters = 0; 	// The number of filters in the "included" state
 	$scope.numActiveFilters = 0;	// The number of filters NOT in the "default" state
+	$scope.activeFilters = [];
 
 	// rotates through filter state on click: 0=inactive -> 1=enabled -> 2=disbled -> 0
-	$scope.cycleFilterType = function(filter) {
-		index = $scope.filters.indexOf($scope.filters.find((item) => item.name === filter));
+	$scope.cycleFilterState = function(filterType, filter) {
+		typeIndex = $scope.filters.indexOf($scope.filters.find((item) => item.relatedProperty === filterType));
+		optionIndex = $scope.filters[typeIndex].options.indexOf($scope.filters[typeIndex].options.find((item) => item.name === filter));
 
-		console.log("$scope.filters[index]:", $scope.filters[index])
+		console.log("typeIndex", typeIndex);
+		console.log("optionIndex", optionIndex);
 
-		switch($scope.filters[index].state){
+		console.log("$scope.filters[typeIndex].options[optionIndex]:", $scope.filters[typeIndex].options[optionIndex]);
+
+		switch($scope.filters[typeIndex].options[optionIndex].state){
 			case 0:
-				$scope.filters[index].state++;
+				$scope.filters[typeIndex].options[optionIndex].state++;
 				$scope.numIncludedFilters++;
 				$scope.numActiveFilters++;
+				$scope.activeFilters.push({ 
+					name: $scope.filters[typeIndex].options[optionIndex].name, 
+					type: $scope.filters[typeIndex].relatedProperty, 
+					state: $scope.filters[typeIndex].options[optionIndex].state
+				});
 				break;
 			case 1:
-				$scope.filters[index].state++;
+				$scope.filters[typeIndex].options[optionIndex].state++;
 				$scope.numIncludedFilters--;
+				$scope.activeFilters[$scope.activeFilters.indexOf($scope.activeFilters.find((item) => item.name === filter))].state = $scope.filters[typeIndex].options[optionIndex].state;
 				break;
 			case 2:
-				$scope.filters[index].state = 0;
+				$scope.filters[typeIndex].options[optionIndex].state = 0;
 				$scope.numActiveFilters--;
+				$scope.activeFilters.splice($scope.activeFilters.indexOf($scope.activeFilters.find((item) => item.name === filter)),1);
 				break;
 		}
 
-		console.log("numIncludedFilters:", $scope.numIncludedFilters);
+		console.log("Active Filters:", $scope.activeFilters);
 		$scope.applyFilters();
 	}
 
 	/* deactivates an active filter */
-	$scope.deactivateFilter = function(filter) {
-		index = $scope.filters.indexOf($scope.filters.find((item) => item.name === filter));
+	$scope.deactivateFilter = function(filterType, filter) {
+		typeIndex = $scope.filters.indexOf($scope.filters.find((item) => item.relatedProperty === filterType));
+		optionIndex = $scope.filters[typeIndex].options.indexOf($scope.filters[typeIndex].options.find((item) => item.name === filter));
 
-		if( $scope.filters[index].state === 1){
-			$scope.filters[index].state = 0;
+		if( $scope.filters[typeIndex].options[optionIndex].state === 1){
+			$scope.filters[typeIndex].options[optionIndex].state = 0;
+			$scope.activeFilters.splice($scope.activeFilters.indexOf($scope.activeFilters.find((item) => item.name === filter)),1);
 			$scope.numIncludedFilters--;
 			$scope.numActiveFilters--;
 		} else { 
-			$scope.filters[index].state = 0;
+			$scope.filters[typeIndex].options[optionIndex].state = 0;
+			$scope.activeFilters.splice($scope.activeFilters.indexOf($scope.activeFilters.find((item) => item.name === filter)),1);
 			$scope.numActiveFilters--;
 		}
-
 		$scope.applyFilters();
 	}
 
-	/* filters through brews using the curently active filters */
+	/* filters through brews using the currently active filters */
 	$scope.applyFilters = function() {
 		$scope.brews = [...$scope.allBrews];
-		if($scope.numActiveFilters > 0){
-			if ($scope.numIncludedFilters > 0){
-		        $scope.brews = $scope.brews.filter(function(brew) {
-		        	return $scope.filters.find((item) => item.name === brew.category).state === 1;
-		        });
+
+		if($scope.activeFilters.length > 0){
+	        for(let i = 0; i < $scope.activeFilters.length; i++){
+	        	$scope.brews = $scope.brews.filter(brew => {
+	        		if($scope.activeFilters[i].state === 1){
+	        			if (brew[$scope.activeFilters[i].type] === $scope.activeFilters[i].name){ return true; }
+		        		else { return false; }
+	        		} 
+	        		if($scope.activeFilters[i].state === 2){
+	        			if (brew[$scope.activeFilters[i].type] === $scope.activeFilters[i].name){ return false; }
+		        		else { return true; }
+	        		}
+
+	        	});
 	        }
-	        $scope.brews = $scope.brews.filter(function(brew) {
-	        	return $scope.filters.find((item) => item.name === brew.category).state != 2;
-	        });
 	    }
-	    if($scope.brews.length > 0){ $scope.selectBrew($scope.brews[0].id); }
-	    
-	};
+	    $scope.activeFilters.sort((a, b) => a.name.localeCompare(b.name));
+	    if($scope.brews.length > 0){ 
+		    $scope.selectBrew($scope.brews[0].id); 
+		}
+	}
 
 	/* hides the filters window and applys all active filters */
 	$scope.closeFilterWindow = function() {

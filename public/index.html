@@ -13,7 +13,7 @@
 	</head>
 	<body ng-class="{ 'dark-mode': darkMode }" ng-controller="MainController">
 		<header class="flex-row">
-			<h1 class="flex-col" style="justify-content:center;">Xpertranger Portfolio</h1>
+			<h1 class="flex-col" style="justify-content:center;">Xpertranger.</h1>
 			<div class="flex-col" style="justify-content:center; height:inherit">
 				<button class="basic-button dark-mode-button" ng-click="toggleDarkMode()">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="dark-mode-icon">
@@ -48,11 +48,11 @@
 						</table>
 						<table  class="brew-nav-table">
 							<tr ng-class="{ 'no-display': !(numActiveFilters > 0) }">
-								<th colspan="2" class="active-filter-row">
+								<th colspan="{{ columns.length }}" class="active-filter-row">
 									<div class="flex-row" style="justify-content:left;padding-left:10px">
 										<button class="basic-button filter-button"
-										ng-repeat="filter in filters"
-										ng-click="deactivateFilter(filter.name)"
+										ng-repeat="filter in activeFilters"
+										ng-click="deactivateFilter(filter.type, filter.name)"
 										ng-class="{ 'no-display': filter.state === 0, 'filter-button-include': filter.state === 1, 'filter-button-exclude': filter.state === 2 }" >
 											{{ filter.name }}
 										</button>
@@ -60,7 +60,7 @@
 								</th>
 							</tr>
 							<tr>
-								<th ng-repeat="column in columns">
+								<th ng-repeat="column in columns" ng-class="{ 'small-col' : column.small === true }">
 									<button ng-click="sortBy(column.relatedProperty)" class="clickable-header">
 										{{column.displayName}}<span ng-class="{ 'padding-right-14' : (currentSort != column.relatedProperty) }">
 											{{ getSortChar(column.relatedProperty) }}
@@ -74,7 +74,7 @@
 								<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew) }" 
 								ng-click="selectBrew(brew.id)" 
 								ng-repeat="brew in brews | filter:searchByTitleFilter | orderBy:currentSort:reverseSort">
-									<td ng-repeat="column in columns">{{ brew[column.relatedProperty] }}</td>
+									<td ng-repeat="column in columns" ng-class="{ 'small-col' : column.small === true }">{{ brew[column.relatedProperty] }}</td>
 								</tr>
 							</table>
 						</div>
@@ -108,14 +108,14 @@
 								</button>
 							</div>
 						</div>
-						<div class="filter-section">
-							<h3>Category</h3>
+						<div ng-repeat="filter in filters" class="section">
+							<h3>{{ filter.displayName }}</h3>
 							<div class="flex-row" style="justify-content:left;">
 								<button class="basic-button filter-button"
-								ng-repeat="filter in filters | filter:filterSearchText"
-								ng-click="cycleFilterType(filter.name)"
-								ng-class="{ 'filter-button-default': filter.state === 0, 'filter-button-include': filter.state === 1, 'filter-button-exclude': filter.state === 2 }" >
-									{{ filter.name }}
+								ng-repeat="filterOption in filter.options | filter:filterSearchText"
+								ng-click="cycleFilterState(filter.relatedProperty, filterOption.name)"
+								ng-class="{ 'filter-button-default': filterOption.state === 0, 'filter-button-include': filterOption.state === 1, 'filter-button-exclude': filterOption.state === 2 }" >
+									{{ filterOption.name }}
 								</button>
 							</div>
 						</div>

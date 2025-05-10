@@ -14,6 +14,10 @@ const brewSchema = new mongoose.Schema({
 	    type: String,
 	    required: true
   	},
+  	edition: {
+  		type: String,
+  		required: true
+  	},
 	summary: String,
 	content: String,
 	created_at: {
