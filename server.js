@@ -23,8 +23,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 }).then(() => {
   console.log('MongoDB connected')
   startServer();
-})
-  .catch(err => console.error(err));
+}).catch(err => console.error(err));
 
 app.use('/brews', brewsRoute);
 

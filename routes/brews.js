@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Brew = require('../models/brew');
-const  mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 router.get('/', async (req, res) => {
   try {
