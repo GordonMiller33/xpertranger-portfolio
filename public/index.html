@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="portfolioApp">
+<html lang="en" ng-app="importApp">
 	<head>
 		<meta charset="UTF-8">
-		<title>Xpertranger Portfolio</title>
+		<title>Import Tool</title>
 		<link rel="icon" type="image/x-icon" href="/images/xpertranger.ico">
 		<link rel="shortcut icon" type="image/x-icon" href="/images/xpertranger.ico">
 		<link rel="stylesheet" href="styles.css">
@@ -13,7 +13,7 @@
 	</head>
 	<body ng-class="{ 'dark-mode': darkMode }" ng-controller="MainController">
 		<header class="flex-row">
-			<h1 class="flex-col" style="justify-content:center;">Xpertranger.</h1>
+			<h1 class="flex-col" style="justify-content:center;">Import Tool</h1>
 			<div class="flex-col" style="justify-content:center; height:inherit">
 				<button class="basic-button dark-mode-button" ng-click="toggleDarkMode()">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="dark-mode-icon">
@@ -34,7 +34,7 @@
 			<div class="display-area">
 				<div class="table-and-brew-box" style="padding:20px;">
 					<div class="content-box">
-						<table  class="brew-nav-table" style="">
+						<table  class="brew-nav-table">
 							<tr>
 								<th style="min-width:0px; width:100px;">
 									<button ng-click="showFilterWindow()" class="clickable-header" >
@@ -71,17 +71,30 @@
 						</table>
 						<div class="vertical-only-scrolling">
 							<table class="brew-nav-table">
-								<tr ng-class="{ 'selected-tr': (brew.id === selectedBrew), 'unselected-tr': (brew.id != selectedBrew) }" 
+								<tr ng-class="{ 'selected-tr': (brew.id === selectedBrewId), 'unselected-tr': (brew.id != selectedBrewId) }" 
 								ng-click="selectBrew(brew.id)" 
 								ng-repeat="brew in brews | filter:searchByTitleFilter | orderBy:currentSort:reverseSort">
 									<td ng-repeat="column in columns" ng-class="{ 'small-col' : column.small === true }">{{ brew[column.relatedProperty] }}</td>
 								</tr>
 							</table>
 						</div>
+						<form>
+							<button ng-click="addBrew()"> Add Blank Brew </button>
+							<button ng-click="deleteSelectedBrew()"> Delete Selected Brew </button>
+							<button ng-click="updateSelectedBrew()"> Save Selected Brew </button>
+							<br>
+							<input type="text" ng-model="brews[selectedBrewIndex].title">
+							<input type="text" ng-model="brews[selectedBrewIndex].category">
+							<input type="text" ng-model="brews[selectedBrewIndex].edition">
+							<br>
+							<input type="text" ng-model="brews[selectedBrewIndex].summary" style="width:500px">
+							<br>
+							<textarea ng-model="brews[selectedBrewIndex].content" style="width:500px;height:500px"></textarea>
+						</form>
 					</div>
 					<div class="vertical-only-scrolling">
 						<div class="brew-display">
-							<section ng-repeat="brew in brews" ng-if="brew.id === selectedBrew">
+							<section ng-repeat="brew in brews" ng-if="brew.id === selectedBrewId">
 								<div ng-bind-html="brew.content"></div>
 							</section>
 						</div>

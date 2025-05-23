@@ -1,6 +1,22 @@
-const app = angular.module('portfolioApp', ['ngSanitize']);
+const app = angular.module('importApp', ['ngSanitize']);
 
 app.controller('MainController', function($scope, $http) {
+
+	$scope.getAllBrews = function() {
+		console.log("Getting All Brews");
+
+		$http.get('/brews')
+			.then((res) => {
+				if(res && res.data){
+					$scope.allBrews = res.data;
+					if($scope.allBrews.length > 0){ $scope.allBrews.sort((a,b) => a.title.localeCompare(b.title)); }
+					console.log("All Brews:", $scope.allBrews);
+				}
+			}).catch((getAllErr) => console.log("Error getting all Brews: ", getAllErr));
+		
+	}
+
+	$scope.getAllBrews();
 
 	/*simple dark mode handling*/
 	$scope.darkMode = true;
@@ -70,8 +86,9 @@ app.controller('MainController', function($scope, $http) {
 	$scope.categories = [];
 
 	//sets a brew to the be the currently selected brew based on id
-	$scope.selectBrew = function(sid){
-		$scope.selectedBrew = parseInt(sid);
+	$scope.selectBrew = function(selectId){
+		$scope.selectedBrewId = parseInt(selectId);
+		$scope.selectedBrewIndex = $scope.brews.indexOf($scope.brews.find(item => item.id === $scope.selectedBrewId));
 	};
 
 
@@ -94,33 +111,27 @@ app.controller('MainController', function($scope, $http) {
                     $scope.brews.sort(function(a, b) {
 					  	return a.title.localeCompare(b.title);
 					});
-					if (newBrew) { $scope.selectedBrew = $scope.nextId }
-					else { $scope.selectedBrew = $scope.brews[0].id; }
-                   
+					if (newBrew) { 
+						$scope.selectedBrewId = $scope.nextId; 
+						$scope.selectedBrewIndex = $scope.brews.indexOf($scope.brews.find(item => item.id === $scope.selectedBrewId));
+					}
+					else { 
+						$scope.selectedBrewId = $scope.brews[0].id; 
+						$scope.selectedBrewIndex = 0;
+					}
 
-                    $scope.ids = [...new Set($scope.brews.map(brew => brew.id))];
-                    $scope.nextId = parseInt(Math.max(...$scope.ids))+1;
+                    $scope.nextId = Math.max(...[...new Set($scope.brews.map(brew => parseInt(brew.id)))])+1;
+                    console.log("nextId:", $scope.nextId);
 
                     if ($scope.brews.length > 0) {
                     	for(let i = 0; i < $scope.filters.length; i++){
+                    		$scope.filters[i].options = [];
                     		let temp = [...new Set($scope.brews.map(brew => brew[$scope.filters[i].relatedProperty]))]
                     		for(let j = 0; j < temp.length; j++){
                     			$scope.filters[i].options.push({ name: temp[j], state: 0 })
                     		}
                     		console.log($scope.filters[i].displayName, "options: ", $scope.filters[i].options );
                     	}
-
-                        // $scope.categories = [...new Set($scope.brews.map(brew => brew.category))];
-                        // for (let i = 0; i < $scope.categories.length; i++){
-						// 	$scope.filters.push({name: $scope.categories[i], state: 0});
-						// }
-                        // console.log('Categories:', $scope.categories);
-                        // $scope.editions = [...new Set($scope.brews.map(brew => brew.edition))];
-                        // for (let i = 0; i < $scope.editions.length; i++){
-						// 	$scope.filters.push({name: $scope.editions[i], state: 0});
-						// }
-                        // console.log('Editions:', $scope.editions);
-                        // console.log('Filters:', $scope.filters);
                     } else {
                         console.warn('No brews found in the database');
                     }
@@ -140,10 +151,11 @@ app.controller('MainController', function($scope, $http) {
 		
 		$scope.newBrew = {
 			id: $scope.nextId,
-			title: $scope.newBrewTitle,
-			category: $scope.newBrewCategory,
-			summary: $scope.newBrewContent,
-			content: $scope.newBrewContent,
+			title: "Title",
+			category: "Category",
+			summary: "Summary",
+			content: "Content in HTML",
+			edition: "5e 20XX"
 		};
 		
 		console.log('Putting brew into brews:', $scope.newBrew);
@@ -162,6 +174,45 @@ app.controller('MainController', function($scope, $http) {
             .catch(function(error) {
                 console.error('Error putting brew:', error);
             });
+	}
+
+	$scope.deleteSelectedBrew = function() {
+		const apiUrl = '/brews/'+$scope.selectedBrewId;
+
+		$http.delete(apiUrl)
+			.then(async response => {
+				console.log('API response:', response);
+				if (response && response.data) {
+					console.log('Brew deleted successfully');
+					await $scope.getBrews(false);
+				} else {
+					console.error('Invalid response format:', response);
+				}
+			}).catch(error => console.error('Error putting brew:', error));
+	}
+
+	$scope.updateSelectedBrew = function() {
+		const apiUrl = '/brews/'+$scope.selectedBrewId;
+
+		$scope.updateData = {
+			id: $scope.selectedBrewId,
+			title: $scope.brews[$scope.selectedBrewIndex].title,
+			category: $scope.brews[$scope.selectedBrewIndex].category,
+			summary: $scope.brews[$scope.selectedBrewIndex].summary,
+			content: $scope.brews[$scope.selectedBrewIndex].content,
+			edition: $scope.brews[$scope.selectedBrewIndex].edition
+		};
+
+		$http.post(apiUrl, $scope.updateData)
+			.then(async response => {
+				console.log('API response:', response);
+				if (response && response.data) {
+					console.log(response.message);
+					await $scope.getBrews(false);
+				} else {
+					console.error('Invalid response format:', response);
+				}
+			}).catch(error => console.error('Error updating brew:', error));
 	}
 
 	$scope.numIncludedFilters = 0; 	// The number of filters in the "included" state

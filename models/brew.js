@@ -1,9 +1,9 @@
-const  mongoose = require('mongoose');
+const mongoose = require("mongoose")
 
-const brewSchema = new mongoose.Schema({
+const brewSchema = new mongoose.Schema({	//this is used to instruct the API what a "brew" should look like
 	id: {
-    	type: Number,
-    	required: true,
+		type: Number,
+		required: true,
     	unique: true
   	},
   	title: {
@@ -26,4 +26,4 @@ const brewSchema = new mongoose.Schema({
 	}
 }, { collection: 'brews' });
 
-module.exports = mongoose.model('Brew', brewSchema, 'brews');
+module.exports = mongoose.model('brew', brewSchema, 'brews');
