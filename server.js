@@ -9,7 +9,7 @@ require("dotenv").config();	//sets up .env file config to be accessed via proces
 
 const app = express();		//instance of express for this application
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
