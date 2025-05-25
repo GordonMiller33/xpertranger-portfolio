@@ -4,8 +4,8 @@
   "description": "A simple site to host and display my D&D homebrew creations",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "nodemon server.js"
+    "start": "node ./server/server.js",
+    "dev": "nodemon ./server/server.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",

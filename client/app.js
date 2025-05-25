@@ -1,4 +1,4 @@
-const app = angular.module('importApp', ['ngSanitize']);
+const app = angular.module('importApp', ['ngSanitize', ]);
 
 app.controller('MainController', function($scope, $http) {
 

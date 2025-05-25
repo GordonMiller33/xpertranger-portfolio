@@ -28,7 +28,7 @@ router.put('/', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
 	try {
 		await brew.deleteOne({id: req.params.id});
-		res.status(200).send({message: "Brew created"});
+		res.status(200).send({message: "Brew deleted"});
 	} catch { 
 		console.log("Error creating brew:", err);
 		next(err);
