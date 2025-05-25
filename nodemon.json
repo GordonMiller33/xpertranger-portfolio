@@ -1,5 +1,6 @@
 {
-  "watch": ["."],
+  "watch": [".", "public", "routes", "models", "login"],
   "ext": "js,json,html,css",
-  "ignore": ["node_modules",".*"]
+  "ignore": ["node_modules",".*"],
+  "legacyWatch": true
 }
